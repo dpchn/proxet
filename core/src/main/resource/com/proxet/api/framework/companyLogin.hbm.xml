@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.proxet.api.model.CompanyLogin" table="company_login">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="foreign">
+				<param name="property">companyEnrollment</param>
+			</generator>
+		</id>
+
+		<property name="email" column="EMAIL" not-null="true" />
+		<property name="password" column="PASSWORD" not-null="true" />
+			<one-to-one name="companyEnrollment"  class="com.proxet.api.model.CompanyEnrollment"
+				constrained="true" />
+		
+	</class>
+</hibernate-mapping>
