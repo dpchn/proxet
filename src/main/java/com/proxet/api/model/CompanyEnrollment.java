@@ -9,19 +9,29 @@ public class CompanyEnrollment {
 	String firstName;
 	String lastName;
 	String company;
+	String phone;
 	CompanyLogin companyLogin;
 	
 	public CompanyEnrollment(){
 		
 	}
 	
-	public CompanyEnrollment( String firstName, String lastName, String company) {
+	public CompanyEnrollment( String firstName, String lastName, String company, String phone) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.company = company;
+		this.phone = phone;
 	}
 	
 	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public CompanyLogin getCompanyLogin() {
 		return companyLogin;
 	}

@@ -47,7 +47,7 @@ public class HibernateSessionUtil {
 		return factoryUtil;
 	}
 	static {
-		sessionFactory = new Configuration().configure("com/proxet/api/config/hibernate.cfg.xml").buildSessionFactory();
+		sessionFactory = new Configuration().configure("com/proxet/api/framework/hibernate.cfg.xml").buildSessionFactory();
 	}
 
 	

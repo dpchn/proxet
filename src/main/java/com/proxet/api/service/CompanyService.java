@@ -27,10 +27,10 @@ public class CompanyService {
 	/**
 	 * Enroll company and there is one-to-one mapping with login table
 	 */
-	public HashMap<String, String> saveEnroll(String firstName, String lastName, String email, String password, String company) {
+	public HashMap<String, String> saveEnroll(String firstName, String lastName, String email, String password, String company, String phone) {
 		CompanyDao dao = AppContext.get().getDAO(CompanyDao.class);
 
-		companyEnrollment = new CompanyEnrollment(firstName, lastName, company);
+		companyEnrollment = new CompanyEnrollment(firstName, lastName, company, phone);
 		companyLogin = new CompanyLogin(email, password);
 		companyEnrollment.setCompanyLogin(companyLogin);
 		companyLogin.setCompanyEnrollment(companyEnrollment);
@@ -39,6 +39,7 @@ public class CompanyService {
 		if(dao.save(companyEnrollment)>0){
 			data.put("company", companyEnrollment.getCompany());
 			data.put("email", companyEnrollment.getCompanyLogin().getEmail());
+			data.put("phone",companyEnrollment.getPhone());
 			return data;
 		}
 		return null;

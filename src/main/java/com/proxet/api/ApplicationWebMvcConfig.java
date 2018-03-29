@@ -1,4 +1,4 @@
-package com.proxet.api.config;
+package com.proxet.api;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,17 +11,17 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.thymeleaf.dialect.IDialect;
+/*import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import nz.net.ultraq.thymeleaf.LayoutDialect;
+import nz.net.ultraq.thymeleaf.LayoutDialect;*/
 
 
-@EnableWebMvc
 @Configuration
-@ComponentScan({ "com.proxet.api.controller" })
+@EnableWebMvc
+//@ComponentScan({ "com.proxet.api.controller" })
 public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
@@ -32,7 +32,7 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter{
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass(JstlView.class);
+      //  resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".jsp");
         return resolver;

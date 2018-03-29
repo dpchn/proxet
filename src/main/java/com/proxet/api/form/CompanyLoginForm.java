@@ -1,9 +1,14 @@
 package com.proxet.api.form;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CompanyLoginForm {
 
+	@NotEmpty
 	private String email;
+	@NotEmpty
 	private String password;
+	@NotEmpty
 	public String getEmail() {
 		return email;
 	}
