@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.proxet.api.model.AdCompaign" table="ad_compaign">
+		<id name="id">
+			<column name="COMPANY_ID" />
+			<generator class="foreign">
+				<param name="property">company</param>
+			</generator>
+		</id>
+		<property name="title" column="TITLE" not-null="true" />
+		<property name="startDate" column="START_DATE" not-null="true" />
+		<property name="endDate" column="END_DATE" not-null="true" />
+		<property name="status">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.proxet.api.framework.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID" insert="false" update="false"/>
+		
+		<set name="compaignRule" table="ad_compaign_rule" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="COMPAIGN_ID" not-null="true" />
+			</key>
+			<one-to-many class="com.proxet.api.model.AdCompaignRule" />
+		</set>
+
+	</class>
+</hibernate-mapping>

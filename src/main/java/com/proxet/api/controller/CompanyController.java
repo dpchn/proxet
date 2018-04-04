@@ -2,9 +2,14 @@ package com.proxet.api.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,18 +29,11 @@ import com.proxet.api.service.CompanyService;
 
 @Controller
 @RequestMapping("/company")
-public class CompanyEnrollmentController {
+public class CompanyController {
 
+	private static Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	@Autowired
 	CompanyService companyService;
-
-	@RequestMapping("/greeting")
-	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-			ModelMap model) {
-		model.addAttribute("name", name);
-		System.out.println("GRETTINGS, " + name + "................!");
-		return "greeting";
-	}
 
 	/**
 	 * 
@@ -52,16 +50,15 @@ public class CompanyEnrollmentController {
 	 */
 	@PostMapping(value = "/enroll")
 	public String enroll(@ModelAttribute("CompanyEnrollmentForm") @Valid CompanyEnrollmentForm enrollForm,
-			BindingResult result, Model model) {
+			BindingResult result, Model model, HttpServletRequest request) {
 		System.out.println("enroll");
 		if (result.hasErrors()) {
-		//	System.out.println(result.);
-			System.out.println("Erroo");
 			System.out.println(result);
-			return "enroll";
+			result.reject( "dummy");
+			return "companyenroll";
 		}
 		HashMap<String, String> map = companyService.saveEnroll(enrollForm.getFirstName(), enrollForm.getLastName(),
-				enrollForm.getEmail(), enrollForm.getPassword(), enrollForm.getCompany(), enrollForm.getPhone());
+				enrollForm.getEmail(), enrollForm.getPassword(), enrollForm.getCompany(), enrollForm.getPhone(), request);
 		model.addAttribute("firstName", map.get("firstName"));
 		model.addAttribute("email", map.get("email"));
 		model.addAttribute("phone", map.get("phone"));
@@ -69,8 +66,9 @@ public class CompanyEnrollmentController {
 	}
 
 	@GetMapping("/login")
-	public String login(){
-		return "compnaylogin";
+	public ModelAndView login(){
+		ModelAndView view = new ModelAndView("compnaylogin");
+		return view;
 	}
 	
 	
@@ -79,8 +77,42 @@ public class CompanyEnrollmentController {
 		Model view = null;
 		if(result.hasErrors())
 			return "companylogin";
-		companyService.login(loginForm.getEmail(), loginForm.getPassword());
+		if(companyService.login(loginForm.getEmail(), loginForm.getPassword())==null)
+			return "companylogin";
+		//companyService.login(loginForm.getEmail(), loginForm.getPassword());
 		return "companyprofile";
 	}
-
+	
+	@GetMapping("/companyProfile")
+	public ModelAndView companyProfile(HttpRequest request){
+		ModelAndView view = new ModelAndView("companyprofile");
+		return view;
+	}
+	
+	@PostMapping("/addDevice")
+	public ModelAndView addDevice(HttpServletRequest request, HttpSession session){
+		companyService.AddDevices("", session, request);
+		ModelAndView view = new ModelAndView("companyprofile");
+		return view;
+	}
+	
+	@PostMapping("/addAdContent")
+	public ModelAndView addAdContent(HttpRequest request){
+		ModelAndView view = new ModelAndView("companyprofile");
+		return view;
+	}
+	
+	@PostMapping("/addAdCompaign")
+	public ModelAndView addAdCompaign(HttpRequest request){
+		ModelAndView view = new ModelAndView("companyprofile");
+		return view;
+	}
+	
+	
+	@PostMapping("/addAdCompaignRule")
+	public ModelAndView addAdCompaignRule(HttpRequest request){
+		ModelAndView view = new ModelAndView("companyprofile");
+		return view;
+	}
+	
 }

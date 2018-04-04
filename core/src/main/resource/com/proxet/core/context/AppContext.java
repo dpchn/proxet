@@ -5,7 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.proxet.dao.DAO;
+import com.proxet.api.dao.DAO;
+
 import java.util.logging.Logger;
 
 public class AppContext {

@@ -1,6 +1,6 @@
 <%-- 
 <%@taglib prefix="h" uri="http://struts.apache.org/tags-html"%> --%>
-<!DOCTYPE HTML>
+<%-- <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <h1>Welcome to Registration Page</h1>
 <form th:action="@{/enroll}" th:object="${CompanyEnrollmentForm}"
@@ -56,10 +56,59 @@
 		</tr>
 	</table>
 </form>
+ --%>
 
 
 
-<!--  	<form action="/enroll" method="post" name="companyEnroll">
- 		<input type="text" name="emai"/>
- 		<input type="submit" value="Submit"/>
- 	</form> -->
+
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="th"%>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<h1 align="center">Welcome to Registration Page</h1>
+<form th:action="/enroll" commandName="CompanyEnrollmentForm"
+	method="post">
+
+	<table align="center">
+		<tr>
+			<th>First Name :</th>
+			<td><input type="text" name="firstName" /></td>
+			<!-- <td><h:errors property="firstName" /></td> -->
+
+		</tr>
+		<tr>
+			<th>Last Name :</th>
+			<td><input type="text" name="lastName"/></td>
+			<!-- <td><h:errors property="lastName" /></td> -->
+		</tr>
+		<tr>
+			<th>Phone No. :</th>
+			<td><input type="text" name="phone"/></td>
+			<!-- <td><h:errors property="phone" /></td> -->
+		</tr>
+		<tr>
+			<th>Email id :</th>
+			<td><input type="text" name="email"/></td>
+			<!-- <td><h:errors property="email" /></td> -->
+		</tr>
+		<tr>
+			<th>Password :</th>
+			<td><input type="password" name="password"/></td>
+			<!-- <td><h:errors property="password" /></td> -->
+		</tr>
+		<tr>
+			<th>Confirm Password :</th>
+			<td><input type="password" name="confirmpassword"/></td>
+			<!-- <td><h:errors property="password" /></td> -->
+		</tr>
+		<tr>
+			<th>Company Name :</th>
+			<td><input type="text" name="company"/></td>
+			<!-- <td><h:errors property="company" /></td> -->
+		</tr>
+		<tr>
+			<th align="center"><input type="submit" name="Register" value="Register" /></th>
+		</tr>
+	</table>
+</form>
+

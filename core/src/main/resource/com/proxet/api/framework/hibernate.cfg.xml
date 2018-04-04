@@ -14,10 +14,19 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
         
-        <mapping resource="com/proxet/api/framework/companyEnrollment.hbm.xml"/> 
+        <mapping resource="com/proxet/api/framework/company.hbm.xml"/> 
  	  	<mapping resource="com/proxet/api/framework/companyLogin.hbm.xml"/>
- 	  
- 	  <mapping class="com.proxet.api.model.CompanyEnrollment"/>
+ 	  	
+ 	  	<mapping resource="com/proxet/api/framework/adContent.hbm.xml"/>
+ 	  	<mapping resource="com/proxet/api/framework/adCompaign.hbm.xml"/>
+ 	  	<mapping resource="com/proxet/api/framework/adCompaignRule.hbm.xml"/>
+ 	  	<mapping resource="com/proxet/api/framework/devices.hbm.xml"/>
+ 	  	
+ 	  <mapping class="com.proxet.api.model.Company"/>
  	  <mapping class="com.proxet.api.model.CompanyLogin"/>
+ 	  <mapping class="com.proxet.api.model.AdContent"/>
+ 	  <mapping class="com.proxet.api.model.AdCompaign"/>
+ 	  <mapping class="com.proxet.api.model.AdCompaignRule"/>
+ 	  <mapping class="com.proxet.api.model.Devices"/>
     </session-factory>
 </hibernate-configuration>

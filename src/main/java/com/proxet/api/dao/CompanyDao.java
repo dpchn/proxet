@@ -1,4 +1,4 @@
-package com.proxet.dao;
+package com.proxet.api.dao;
 
 import java.io.Serializable;
 import java.util.Iterator;
@@ -9,14 +9,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 
-import com.proxet.api.model.CompanyEnrollment;
+import com.proxet.api.model.Company;
 import com.proxet.api.model.CompanyLogin;
 import com.proxet.core.context.AppContext;
 
-public class CompanyDao extends DAO<CompanyEnrollment> {
+public class CompanyDao extends DAO<Company> {
 
-	public int save(CompanyEnrollment company) {
+	public int save(Company company) {
 		int companyId = super.save(company);
+		
 		return companyId;
 	}
 

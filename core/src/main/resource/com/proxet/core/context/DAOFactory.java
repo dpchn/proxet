@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.management.RuntimeErrorException;
 
-import com.proxet.dao.DAO;
+import com.proxet.api.dao.DAO;
 
 public class DAOFactory {
 

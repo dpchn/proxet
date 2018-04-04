@@ -8,25 +8,25 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.proxet.api.util.ConstantPattern;
 
 public class CompanyEnrollmentForm {
-	@NotEmpty
-	@Pattern(regexp = ConstantPattern.namePattern)
+	@NotEmpty(message="Enter First name")
+	@Pattern(regexp = ConstantPattern.namePattern,message="Enter only alphbet")
 	private String firstName;
-	@NotEmpty
-	@Pattern(regexp = ConstantPattern.namePattern)
+	@NotEmpty(message="Enter last Name")
+	@Pattern(regexp = ConstantPattern.namePattern,message ="Enter only alphbet")
 	private String lastName;
 
-	@NotEmpty
-	@Email
+	@NotEmpty(message="Enter email")
+	@Email(message="Incorrect email")
 	private String email;
 
-	@NotEmpty
+	@NotEmpty(message="Enter password")
 	private String password;
-	@NotEmpty
+	@NotEmpty(message="Enter confirm password")
 	private String confirmpassword;
-	@NotEmpty
+	@NotEmpty(message="Enter company name")
 	private String company;
-	@NotEmpty
-	@Pattern(regexp = ConstantPattern.phonePattern)
+	@NotEmpty(message="Enter password")
+	@Pattern(regexp = ConstantPattern.phonePattern, message="Enter proper phone no.")
 	private String phone;
 
 	public String getPhone() {

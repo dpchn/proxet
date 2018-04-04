@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.proxet.api.model.AdCompaignRule" table="ad_compaign_rule">
+		<id name="id">
+			<column name="COMPAIGN_ID" />
+			<generator class="foreign">
+				<param name="property">adCompaign</param>
+			</generator>
+		</id>
+		<property name="title" column="TITLE" not-null="true" />
+		<property name="contentType" column="CONTENT_TYPE" not-null="true" />
+		<property name="status">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.proxet.api.framework.Status</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		<many-to-one name="compaign" class="com.proxet.api.model.AdCompaign" column="COMPAIGN_ID" insert="false" update="false"/>
+		<!-- <one-to-many name="devices" class="com.proxet.api.model.AdCompaignRule" column="AD_COMPAIGN_RULE" insert="false" update="false"/> -->
+			<set name="devices" table="devices" inverse="true"
+				lazy="true" fetch="select" >
+				<key>
+					<column name="AD_COMPAIGN_RULE" not-null="true" />
+				</key>
+				<one-to-many class="com.proxet.api.model.Devices" />
+			</set> 
+	</class>
+</hibernate-mapping>

@@ -1,13 +1,31 @@
 package com.proxet.api.model;
 
+import com.proxet.api.framework.Status;
+
 public class CompanyLogin {
 
+	private int companyId;
 	private int id;
 	private String email;
 	private String password;
-	private CompanyEnrollment companyEnrollment;
-
+	private Company companyEnrollment;
+	private Status status;
+	private Company company;
 	
+	
+	
+	public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	public int getCompanyId() {
+		return companyId;
+	}
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 	public CompanyLogin(){
 		
 	}
@@ -17,12 +35,12 @@ public class CompanyLogin {
 	}
 
 	
-	public CompanyEnrollment getCompanyEnrollment() {
+	public Company getCompanyEnrollment() {
 		return companyEnrollment;
 	}
 
 
-	public void setCompanyEnrollment(CompanyEnrollment companyEnrollment) {
+	public void setCompanyEnrollment(Company companyEnrollment) {
 		this.companyEnrollment = companyEnrollment;
 	}
 
@@ -50,5 +68,13 @@ public class CompanyLogin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	
+	
 }
