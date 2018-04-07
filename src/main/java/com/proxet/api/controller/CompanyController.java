@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,11 +58,9 @@ public class CompanyController {
 			result.reject( "dummy");
 			return "companyenroll";
 		}
-		HashMap<String, String> map = companyService.saveEnroll(enrollForm.getFirstName(), enrollForm.getLastName(),
-				enrollForm.getEmail(), enrollForm.getPassword(), enrollForm.getCompany(), enrollForm.getPhone(), request);
-		model.addAttribute("firstName", map.get("firstName"));
-		model.addAttribute("email", map.get("email"));
-		model.addAttribute("phone", map.get("phone"));
+		int id = companyService.saveEnroll(enrollForm.getFirstName(), enrollForm.getLastName(),
+				enrollForm.getEmail(), enrollForm.getPassword(), enrollForm.getCompany(), enrollForm.getPhone());
+		request.getSession().setAttribute("id", id);
 		return "companyprofile";
 	}
 
@@ -89,9 +88,12 @@ public class CompanyController {
 		return view;
 	}
 	
-	@PostMapping("/addDevice")
-	public ModelAndView addDevice(HttpServletRequest request, HttpSession session){
-		companyService.AddDevices("", session, request);
+	@GetMapping("/addDevice/{id}")
+	public ModelAndView addDevice(HttpServletRequest request, @PathVariable("id") String deviceIds){
+		System.out.println(request.getSession().getAttributeNames());
+		int id = (int) request.getSession().getAttribute("id");
+		System.out.println("Requestid : "+id);
+		companyService.AddDevices(deviceIds, id);
 		ModelAndView view = new ModelAndView("companyprofile");
 		return view;
 	}

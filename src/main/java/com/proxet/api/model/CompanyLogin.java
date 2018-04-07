@@ -4,7 +4,6 @@ import com.proxet.api.framework.Status;
 
 public class CompanyLogin {
 
-	private int companyId;
 	private int id;
 	private String email;
 	private String password;
@@ -19,12 +18,6 @@ public class CompanyLogin {
 	}
 	public void setCompany(Company company) {
 		this.company = company;
-	}
-	public int getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
 	}
 	public CompanyLogin(){
 		

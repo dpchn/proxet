@@ -5,18 +5,9 @@
 
 <hibernate-mapping>
 	<class name="com.proxet.api.model.CompanyLogin" table="company_login">
-		<!-- <id name="id" column="ID">
-			<generator class="identity" />
+		<id name="id" column="ID">
+			<generator class="increment" />
 		</id>
-		 -->
-		<id name="id">
-			<column name="COMPANY_ID" />
-			<generator class="foreign">
-				<param name="property">company</param>
-			</generator>
-		</id>
-		<!-- <id name="companyId"> <column name="COMPANY_ID" /> <generator class="foreign"> 
-			<param name="property">companyEnrollment</param> </generator> </id> -->
 		<property name="email" column="EMAIL" not-null="true" />
 		<property name="password" column="PASSWORD" not-null="true" />
 		<property name="status">
@@ -26,7 +17,7 @@
 			</type>
 		</property>
 		<one-to-one name="company" class="com.proxet.api.model.Company"
-			constrained="true" />
+			cascade="save-update" />
 
 	</class>
 </hibernate-mapping>

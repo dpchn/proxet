@@ -7,13 +7,11 @@
 	<class name="com.proxet.api.model.Company" table="company">
 
 		<id name="id" column="COMPANY_ID">
-			<generator class="identity" />
+			<generator class="increment" />
 		</id>
-		<!-- <id name="companyId" column="COMPANY_ID"> <generator class="com.proxet.api.util.CustomIdGenerator" 
-			/> </id> -->
 		<property name="firstName" column="FIRSTNAME" />
 		<property name="lastName" column="LASTNAME" />
-		<property name="company" column="COMPANY" />
+		<property name="company" column="COMPANY_NAME" />
 		<property name="phone" column="PHONE" not-null="true" />
 		<property name="status">
 			<type name="org.hibernate.type.EnumType">
@@ -21,15 +19,18 @@
 				<param name="type">12</param>
 			</type>
 		</property>
-		
-		<set name="adContents" table="ad_content" inverse="true"
-			lazy="true" fetch="select" cascade="all" >
+		<one-to-one name="companyLogin" class="com.proxet.api.model.CompanyLogin"
+			cascade="save-update" />
+	 	
+	 	<set name="adContents" table="ad_content" inverse="true"
+			lazy="true" fetch="join" cascade="all" >
 			<key>
-				<column name="COMPANY_ID" not-null="true" />
+				<column name="COMPANY_ID" not-null="false" />
 			</key>
 			<one-to-many class="com.proxet.api.model.AdContent" />
 		</set>
 		
+		<!-- 
 		<set name="compaigns" table="ad_compaign" inverse="true"
 			lazy="true" fetch="select" cascade="all">
 			<key>
@@ -44,6 +45,6 @@
 				<column name="COMPANY_ID" not-null="true"  />
 			</key>
 			<one-to-many class="com.proxet.api.model.Devices" />
-		</set>
+		</set> -->
 	</class>
 </hibernate-mapping>

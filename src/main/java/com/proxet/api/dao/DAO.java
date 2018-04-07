@@ -27,8 +27,9 @@ public class DAO<T> {
 			transaction = session.beginTransaction();
 			transaction.begin();
 			Serializable objectId = session.save(object);
-			
+			transaction.commit();
 			session.flush();
+			session.close();
 			return (int) objectId;
 		}catch (Exception e) {
 			System.out.println("Exception while renoll company"+e);
@@ -37,17 +38,33 @@ public class DAO<T> {
 	}
 	
 	
-	/*public int find(T object, Serializable objectId2){
+	public Object find(T object, Serializable id){
 		try{
 			Session session = getSession();
-			CompanyEnrollment objectId = (CompanyEnrollment) session.load(object.getClass(), objectId2);;
+			Company objectId = (Company) session.load(object.getClass(), id);
 			session.flush();
-			System.out.println("Oject id is : "+objectId.getId()+" "+objectId2+" "+object.getClass());
-			return objectId.getId();
+			System.out.println("Oject id is : "+objectId.getId()+"  "+object.getClass());
+			return objectId;
 		}catch (Exception e) {
 			System.out.println("Exception while renoll company"+e);
 			throw e;
 		}
-	}*/
+	}
 	
+	public boolean update(T object){
+		Transaction transaction;
+		Session session = getSession();
+		try{
+			transaction = session.beginTransaction();
+			transaction.begin();
+			session.update(object);;
+			transaction.commit();
+			session.flush();
+			session.close();
+			return true;
+		}catch (Exception e) {
+			System.out.println("Exception while update company"+e);
+			return false;
+		}
+	}
 }

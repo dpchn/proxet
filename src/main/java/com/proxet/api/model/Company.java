@@ -13,7 +13,7 @@ public class Company {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private String company;
+	private String companyName;
 	private String phone;
 	private CompanyLogin companyLogin;
 	private Set<AdContent> adContents = new HashSet<AdContent>(0);
@@ -28,7 +28,7 @@ public class Company {
 	public Company( String firstName, String lastName, String company, String phone) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.company = company;
+		this.companyName = company;
 		this.phone = phone;
 	}
 	
@@ -71,10 +71,10 @@ public class Company {
 	}
 	
 	public String getCompany() {
-		return company;
+		return companyName;
 	}
-	public void setCompany(String company) {
-		this.company = company;
+	public void setCompany(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public Status getStatus() {

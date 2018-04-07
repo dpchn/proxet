@@ -17,10 +17,15 @@ public class CompanyDao extends DAO<Company> {
 
 	public int save(Company company) {
 		int companyId = super.save(company);
-		
 		return companyId;
 	}
 
+	
+	public boolean update(Company company){
+		return super.update(company);
+	}
+	
+	
 	public CompanyLogin login(String email, String password) {
 		Session session = AppContext.get().openSession();
 		CompanyLogin user = null;
