@@ -10,20 +10,7 @@ public class Devices {
 	private String deviceId;
 	private Status status;
 	private Company company;
-	private int companyId;
 	private Set<AdCompaignRule> compaignRule = new HashSet<>();
-	
-	
-	
-	public int getCompanyId() {
-		return companyId;
-	}
-
-
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
-	}
-
 
 	public Devices() {
 		// TODO Auto-generated constructor stub

@@ -12,7 +12,7 @@ public class DeviceDao extends DAO<Devices> {
 		return companyId;
 	}
 	
-	public Company find(Company object,int id){
+	/*public Company find(Company object,int id){
 		try{
 			Session session = getSession();
 			Company objectId = (Company) session.load(object.getClass(), id);
@@ -23,5 +23,5 @@ public class DeviceDao extends DAO<Devices> {
 			System.out.println("Exception while renoll company"+e);
 			throw e;
 		}
-	}
+	}*/
 }

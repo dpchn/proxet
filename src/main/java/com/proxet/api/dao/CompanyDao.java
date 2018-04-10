@@ -37,4 +37,9 @@ public class CompanyDao extends DAO<Company> {
 		user = (CompanyLogin) query.uniqueResult();
 		return user;
 	}
+	
+	
+	public Company find(Company company, int id){
+		return (Company) super.find(company, id);
+	}
 }

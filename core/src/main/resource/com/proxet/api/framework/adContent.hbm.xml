@@ -18,7 +18,6 @@
 				<param name="type">12</param>
 			</type>
 		</property>
-		<many-to-one name="company" column="COMPANY_ID" class="com.proxet.api.model.Company" insert="false" update="false"/>
-
+		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" />
 	</class>
 </hibernate-mapping>

@@ -21,7 +21,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;*/
 
 @Configuration
 @EnableWebMvc
-//@ComponentScan({ "com.proxet.api.controller" })
+//@ComponentScan({ "com.proxet.api.controller","com.proxet.api.service" })
 public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override

@@ -22,13 +22,13 @@
 		<one-to-one name="companyLogin" class="com.proxet.api.model.CompanyLogin"
 			cascade="save-update" />
 	 	
-	 	<set name="adContents" table="ad_content" inverse="true"
+	 	<!-- <set name="adContents" table="ad_content" inverse="true"
 			lazy="true" fetch="join" cascade="all" >
 			<key>
 				<column name="COMPANY_ID" not-null="false" />
 			</key>
 			<one-to-many class="com.proxet.api.model.AdContent" />
-		</set>
+		</set> -->
 		
 		<!-- 
 		<set name="compaigns" table="ad_compaign" inverse="true"

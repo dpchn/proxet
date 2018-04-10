@@ -29,7 +29,7 @@ public class DAO<T> {
 			Serializable objectId = session.save(object);
 			transaction.commit();
 			session.flush();
-			session.close();
+		//	session.close();
 			return (int) objectId;
 		}catch (Exception e) {
 			System.out.println("Exception while renoll company"+e);
@@ -38,15 +38,16 @@ public class DAO<T> {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public Object find(T object, Serializable id){
 		try{
 			Session session = getSession();
-			Company objectId = (Company) session.load(object.getClass(), id);
+			T objectId = (T) session.load(object.getClass(), id);
 			session.flush();
-			System.out.println("Oject id is : "+objectId.getId()+"  "+object.getClass());
+		//	session.close();
 			return objectId;
 		}catch (Exception e) {
-			System.out.println("Exception while renoll company"+e);
+			System.out.println("Exception while company find"+e);
 			throw e;
 		}
 	}

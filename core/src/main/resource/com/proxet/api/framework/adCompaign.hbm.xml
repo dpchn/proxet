@@ -6,10 +6,8 @@
 <hibernate-mapping>
 	<class name="com.proxet.api.model.AdCompaign" table="ad_compaign">
 		<id name="id">
-			<column name="COMPANY_ID" />
-			<generator class="foreign">
-				<param name="property">company</param>
-			</generator>
+			<column name="ID" />
+			<generator class="increment" />
 		</id>
 		<property name="title" column="TITLE" not-null="true" />
 		<property name="startDate" column="START_DATE" not-null="true" />
@@ -20,15 +18,15 @@
 				<param name="type">12</param>
 			</type>
 		</property>
-		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID" insert="false" update="false"/>
-		
-		<set name="compaignRule" table="ad_compaign_rule" inverse="true"
+		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" />
+		<one-to-one name="compaignRule" class="com.proxet.api.model.AdCompaignRule" cascade="save-update" />
+		<!-- <set name="compaignRule" table="ad_compaign_rule" inverse="true"
 			lazy="true" fetch="select">
 			<key>
 				<column name="COMPAIGN_ID" not-null="true" />
 			</key>
 			<one-to-many class="com.proxet.api.model.AdCompaignRule" />
-		</set>
+		</set> -->
 
 	</class>
 </hibernate-mapping>

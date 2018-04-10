@@ -10,8 +10,19 @@ public class AdCompaignRule {
 	private int id;
 	private AdCompaign compaign;
 	private String ContentType;
+	private Company company;
 	private Set<Devices> devices =  new HashSet<Devices>();
 	
+	
+	
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	public Set<Devices> getDevices() {
 		return devices;
 	}
