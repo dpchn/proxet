@@ -7,6 +7,15 @@ public class AdCompaignForm {
 	String startTime;
 	String endTime;
 	String title;
+	String days[];
+	
+	
+	public String[] getDays() {
+		return days;
+	}
+	public void setDays(String[] days) {
+		this.days = days;
+	}
 	public String getStartDate() {
 		return startDate;
 	}

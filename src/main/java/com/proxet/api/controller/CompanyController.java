@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.proxet.api.form.AdCompaignForm;
 import com.proxet.api.form.AdContentForm;
+import com.proxet.api.form.CompaignRuleForm;
 import com.proxet.api.form.CompanyEnrollmentForm;
 import com.proxet.api.form.CompanyLoginForm;
 import com.proxet.api.service.AdCompaignRuleService;
@@ -36,15 +37,20 @@ public class CompanyController {
 	private static Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	@Autowired
 	CompanyService companyService;
+	@Autowired
 	DeviceService deviceService;
+	@Autowired
 	AdContentService adContentService;
+	@Autowired
 	AdCompaignService compaignService;
+	@Autowired
 	AdCompaignRuleService compaignRuleService;
 
 	@GetMapping("/")
-	public String index(){
+	public String index() {
 		return "index";
 	}
+
 	/**
 	 * 
 	 * Company Enroll get request
@@ -81,11 +87,11 @@ public class CompanyController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("CompanyLoginForm") @Validated CompanyLoginForm loginForm, BindingResult result,
-			Model model) {
+			Model model, HttpServletRequest request) {
 		Model view = null;
 		if (result.hasErrors())
 			return "companylogin";
-		if (companyService.login(loginForm.getEmail(), loginForm.getPassword()) == null)
+		if (companyService.login(loginForm.getEmail(), loginForm.getPassword(), request) == null)
 			return "companylogin";
 		// companyService.login(loginForm.getEmail(), loginForm.getPassword());
 		return "companyprofile";
@@ -102,7 +108,7 @@ public class CompanyController {
 		System.out.println(request.getSession().getAttributeNames());
 		int id = (int) request.getSession().getAttribute("id");
 		System.out.println("Requestid : " + id);
-		companyService.AddDevices("ABD", id);
+		companyService.AddDevices(deviceIds, id);
 		ModelAndView view = new ModelAndView("companyprofile");
 		return view;
 	}
@@ -123,25 +129,34 @@ public class CompanyController {
 		return view;
 	}
 
-	
 	@GetMapping(value = "/addCompaign")
 	public String addCompaign() {
 		return "addCompaign";
 	}
-	
+
 	@PostMapping("/addCompaign")
 	public ModelAndView addAdCompaign(@ModelAttribute("adCompaignForm") AdCompaignForm compaignForm,
 			HttpServletRequest request) {
 		int companyId = (int) request.getSession().getAttribute("id");
-		companyService.addCompaign(compaignForm.getTitle(), compaignForm.getStartDate(), compaignForm.getEndDate(),
-				compaignForm.getStartTime(), compaignForm.getEndTime(), companyId);
+		companyService.addCompaign(request, compaignForm.getTitle(), compaignForm.getStartDate(),
+				compaignForm.getEndDate(), compaignForm.getStartTime(), compaignForm.getEndTime(), companyId);
 		ModelAndView view = new ModelAndView("companyprofile");
 		return view;
 	}
 
-	@PostMapping("/addAdCompaignRule")
-	public ModelAndView addAdCompaignRule(HttpRequest request) {
+	@GetMapping("/addCompaignRule")
+	public String addAdCompaignRule() {
+		return "addCompaignRule";
+	}
+
+	@PostMapping("/addCompaignRule")
+	public ModelAndView addAdCompaignRule(@ModelAttribute("compaignRuleForm") CompaignRuleForm compaignRuleForm,
+			HttpServletRequest request) {
 		ModelAndView view = new ModelAndView("companyprofile");
+		int companyId = (int) request.getSession().getAttribute("id");
+		int compaignId = (int) request.getSession().getAttribute("compaignId");
+		companyService.addCompaignRule(compaignRuleForm.getTitle(), compaignRuleForm.getStartTime(),
+				compaignRuleForm.getEndTime(), "", compaignRuleForm.getDays(), companyId, compaignId);
 		return view;
 	}
 

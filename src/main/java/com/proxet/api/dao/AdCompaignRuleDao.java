@@ -1,10 +1,10 @@
 package com.proxet.api.dao;
 
-import com.proxet.api.model.AdCompaignRule;
+import com.proxet.api.model.CompaignRule;
 
-public class AdCompaignRuleDao extends DAO<AdCompaignRule>{
+public class AdCompaignRuleDao extends DAO<CompaignRule>{
 
-	public int addCompaingRule(AdCompaignRule compaignRule){
+	public int addCompaingRule(CompaignRule compaignRule){
 		return super.save(compaignRule);
 	}
 }

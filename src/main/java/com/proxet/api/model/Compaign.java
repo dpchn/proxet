@@ -1,30 +1,54 @@
 package com.proxet.api.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.proxet.api.framework.Status;
 
-public class AdCompaign {
+/**
+ * 
+ * @author dpchn
+ *
+ */
+/*@Entity
+@Table(name="ad_compaign")*/
+public class Compaign {
 
+	//@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@Column(name="ID")
 	private int id;
+	
+	//@Column(name="TITLE")
 	private String title;
+	//@Column(name="START_DATE")
 	private Date startDate;
+//	@Column(name="END_DATE")
 	private Date EndDate;
 	private Company company;
-	private AdCompaignRule compaignRule;
+	private CompaignRule compaignRule;
+	//@Column(name="STATUS")
 	private Status status;
-
-	private Set<AdCompaignRule> compaignRules = new HashSet<AdCompaignRule>(0);
+	
+	private static final long serialVersionUID = -723583058586873479L;
+	private Set<CompaignRule> compaignRules = new HashSet<CompaignRule>(0);
 	
 	
 	
-	public AdCompaign() {
+	public Compaign() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AdCompaign(String title, Date startDate, Date endDate, Company company) {
+	public Compaign(String title, Date startDate, Date endDate, Company company) {
 		super();
 		this.title = title;
 		this.startDate = startDate;
@@ -63,11 +87,11 @@ public class AdCompaign {
 	}
 	
 
-	public Set<AdCompaignRule> getCompaignRules() {
+	public Set<CompaignRule> getCompaignRules() {
 		return compaignRules;
 	}
 
-	public void setCompaignRules(Set<AdCompaignRule> compaignRules) {
+	public void setCompaignRules(Set<CompaignRule> compaignRules) {
 		this.compaignRules = compaignRules;
 	}
 
@@ -79,11 +103,11 @@ public class AdCompaign {
 		this.status = status;
 	}
 
-	public AdCompaignRule getCompaignRule() {
+	public CompaignRule getCompaignRule() {
 		return compaignRule;
 	}
 
-	public void setCompaignRule(AdCompaignRule compaignRule) {
+	public void setCompaignRule(CompaignRule compaignRule) {
 		this.compaignRule = compaignRule;
 	}
 	

@@ -8,8 +8,6 @@
 		<id name="id" column="ID">
 			<generator class="increment" />
 		</id>
-		<!-- <id name="companyId"> <column name="COMPANY_ID" /> <generator class="foreign"> 
-			<param name="property">companyEnrollment</param> </generator> </id> -->
 		<property name="deviceId" column="DEVICE_ID" not-null="true" />
 		<property name="status">
 			<type name="org.hibernate.type.EnumType">
@@ -17,14 +15,14 @@
 				<param name="type">12</param>
 			</type>
 		</property>
-		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" /><!-- 
-		<many-to-one name="compaignRule" class="com.proxet.api.model.AdCompaignRule" column="DEVICE_ASSIGNED" insert="false" update="false"/> -->
-		 <!-- <set name="compaignRule" table="devices" inverse="true"
+		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" />
+		<!-- <many-to-one name="compaignRule" class="com.proxet.api.model.CompaignRule" column="DEVICE_ASSIGNED" insert="false" update="false"/>
+		 --> <!-- <set name="compaignRule" table="devices" inverse="true"
 			lazy="true" fetch="select" >
 			<key>
 				<column name="DEVICE_ASSIGNED" not-null="true" />
 			</key>
-			<many-to-one class="com.proxet.api.model.AdCompaignRule" column="ID" />
+			<many-to-one class="com.proxet.api.model.CompaignRule" column="ID" />
 		</set> -->
 	</class>
 </hibernate-mapping>

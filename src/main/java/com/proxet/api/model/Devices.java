@@ -10,7 +10,7 @@ public class Devices {
 	private String deviceId;
 	private Status status;
 	private Company company;
-	private Set<AdCompaignRule> compaignRule = new HashSet<>();
+	private Set<CompaignRule> compaignRule = new HashSet<>();
 
 	public Devices() {
 		// TODO Auto-generated constructor stub
@@ -52,12 +52,12 @@ public class Devices {
 	}
 
 
-	public Set<AdCompaignRule> getCompaignRule() {
+	public Set<CompaignRule> getCompaignRule() {
 		return compaignRule;
 	}
 
 
-	public void setCompaignRule(Set<AdCompaignRule> compaignRule) {
+	public void setCompaignRule(Set<CompaignRule> compaignRule) {
 		this.compaignRule = compaignRule;
 	}
 	

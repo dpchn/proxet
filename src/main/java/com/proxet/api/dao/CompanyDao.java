@@ -1,13 +1,10 @@
 package com.proxet.api.dao;
 
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.transform.AliasToBeanResultTransformer;
 
 import com.proxet.api.model.Company;
 import com.proxet.api.model.CompanyLogin;
@@ -25,6 +22,22 @@ public class CompanyDao extends DAO<Company> {
 		return super.update(company);
 	}
 	
+	/*public int loginSave(CompanyLogin company) {
+		Transaction transaction;
+		try{
+			Session session = getSession();
+			transaction = session.beginTransaction();
+			transaction.begin();
+			Serializable objectId = session.save(company);
+			transaction.commit();
+			session.flush();
+		//	session.close();
+			return (int) objectId;
+		}catch (Exception e) {
+			System.out.println("Exception while renoll company"+e);
+			throw e;
+		}
+	}*/
 	
 	public CompanyLogin login(String email, String password) {
 		Session session = AppContext.get().openSession();

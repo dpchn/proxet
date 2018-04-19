@@ -15,9 +15,10 @@ public class Company {
 	private String lastName;
 	private String companyName;
 	private String phone;
+	private String email;
 	private CompanyLogin companyLogin;
 	private Set<AdContent> adContents = new HashSet<AdContent>(0);
-	private Set<AdCompaign> compaigns = new HashSet<AdCompaign>(0);
+	private Set<Compaign> compaigns = new HashSet<Compaign>(0);
 	private Set<Devices> devices = new HashSet<Devices>(0);
 	private Status status;
 	
@@ -25,13 +26,32 @@ public class Company {
 		
 	}
 	
-	public Company( String firstName, String lastName, String company, String phone) {
+	public Company( String firstName, String lastName, String company, String phone, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.companyName = company;
 		this.phone = phone;
+		this.email = email;
 	}
 	
+
+	
+	
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getPhone() {
 		return phone;
@@ -93,11 +113,11 @@ public class Company {
 		this.adContents = adContents;
 	}
 
-	public Set<AdCompaign> getCompaigns() {
+	public Set<Compaign> getCompaigns() {
 		return compaigns;
 	}
 
-	public void setCompaigns(Set<AdCompaign> compaigns) {
+	public void setCompaigns(Set<Compaign> compaigns) {
 		this.compaigns = compaigns;
 	}
 

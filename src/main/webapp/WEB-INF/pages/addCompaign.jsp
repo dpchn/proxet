@@ -6,7 +6,7 @@
 <h1 align="center">Welcome to Registration Page</h1>
 <form th:action="/addCompaign" commandName="adCompaignForm"
 	method="post">
-
+  
 	<table align="center">
 		<tr>
 			<th>Title :</th>

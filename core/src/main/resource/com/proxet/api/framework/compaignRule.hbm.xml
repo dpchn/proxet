@@ -4,12 +4,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.proxet.api.model.AdCompaignRule" table="ad_compaign_rule">
+	<class name="com.proxet.api.model.CompaignRule" table="ad_compaign_rule">
 		<id name="id" column="ID">
 			<generator class="increment" />
 		</id>
 		<property name="title" column="TITLE" not-null="true" />
+		<property name="startTime" column="START_TIME" not-null="true" />
+		<property name="endTime" column="END_TIME" not-null="true" />
 		<property name="contentType" column="CONTENT_TYPE" not-null="true" />
+		<property name="scheduleDays" column="SCHEDULE_DAYS" not-null="true" />
 		<property name="status">
 			<type name="org.hibernate.type.EnumType">
 				<param name="enumClass">com.proxet.api.framework.Status</param>
@@ -17,13 +20,13 @@
 			</type>
 		</property>
 		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" />
-		<one-to-one name="compaign" class="com.proxet.api.model.AdCompaign" cascade="save-update" />
-			<!-- <set name="devices" table="devices" inverse="true"
+		<one-to-one name="compaign" class="com.proxet.api.model.Compaign" cascade="save-update" />
+			<set name="devices" table="devices" inverse="true"
 				lazy="true" fetch="select" >
 				<key>
 					<column name="AD_COMPAIGN_RULE" not-null="true" />
 				</key>
 				<one-to-many class="com.proxet.api.model.Devices" />
-			</set> --> 
+			</set> 
 	</class>
 </hibernate-mapping>

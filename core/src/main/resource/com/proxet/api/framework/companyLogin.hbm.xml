@@ -16,7 +16,7 @@
 				<param name="type">12</param>
 			</type>
 		</property>
-		<one-to-one name="company" class="com.proxet.api.model.Company"
+		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"
 			cascade="save-update" />
 
 	</class>

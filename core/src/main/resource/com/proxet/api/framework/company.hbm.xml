@@ -12,6 +12,7 @@
 		<property name="firstName" column="FIRSTNAME" />
 		<property name="lastName" column="LASTNAME" />
 		<property name="company" column="COMPANY_NAME" />
+		<property name="email" column="EMAIL"/>
 		<property name="phone" column="PHONE" not-null="true" />
 		<property name="status">
 			<type name="org.hibernate.type.EnumType">

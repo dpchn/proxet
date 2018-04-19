@@ -47,8 +47,8 @@ public class AppContext {
 		return HibernateSessionUtil.getSessionFactory().openSession();
 	}
 	
-	/*public static void closeSession(){
-		SessionFactoryUtil.getSessionFactory().closeSessoin();
-	}*/
+	public void closeSession(){
+		HibernateSessionUtil.getSessionFactory().destroySession();
+	}
 	
 }

@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.proxet.api.model.AdCompaign" table="ad_compaign">
+	<class name="com.proxet.api.model.Compaign" table="ad_compaign">
 		<id name="id">
 			<column name="ID" />
 			<generator class="increment" />
@@ -19,7 +19,7 @@
 			</type>
 		</property>
 		<many-to-one name="company" class="com.proxet.api.model.Company" column="COMPANY_ID"  cascade ="all" insert="true" update="true" />
-		<one-to-one name="compaignRule" class="com.proxet.api.model.AdCompaignRule" cascade="save-update" />
+		<one-to-one name="compaignRule" class="com.proxet.api.model.CompaignRule" cascade="save-update" />
 		<!-- <set name="compaignRule" table="ad_compaign_rule" inverse="true"
 			lazy="true" fetch="select">
 			<key>
