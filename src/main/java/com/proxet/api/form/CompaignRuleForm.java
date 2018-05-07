@@ -6,7 +6,7 @@ public class CompaignRuleForm {
 	String startTime;
 	String endTime;
 	String title;
-	String content;
+	String contentType;
 	String devices[];
 	String days[];
 	String showContent;
@@ -15,12 +15,7 @@ public class CompaignRuleForm {
 	
 	
 	
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
+	
 	public String[] getDevices() {
 		return devices;
 	}
@@ -70,6 +65,12 @@ public class CompaignRuleForm {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getContentType() {
+		return contentType;
+	}
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 	
 	

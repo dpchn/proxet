@@ -1,10 +1,7 @@
 package com.proxet.api.dao;
 
-import java.io.Serializable;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.proxet.api.model.Company;
 import com.proxet.api.model.CompanyLogin;

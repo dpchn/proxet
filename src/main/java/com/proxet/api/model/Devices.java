@@ -1,46 +1,91 @@
 package com.proxet.api.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import com.proxet.api.framework.Status;
 
+@Entity
+@Table(name="devices", catalog="proxet")
 public class Devices {
+	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "compaign"))
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID",unique=true, nullable=false)
 	private int id;
-	private String deviceId;
-	private Status status;
-	private Company company;
-	private Set<CompaignRule> compaignRule = new HashSet<>();
 
+	@Column(name="DEVICE_UI_ID")
+	private String deviceUId;
+
+	@Column(name="LOCATION")
+	private String location;
+	
+	@Column(name="STATUS")
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	@ManyToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
+	@JoinColumn(name="COMPANY_ID")
+	private Company company;
+	
+	/*@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, targetEntity=CompaignRule.class)
+	private Set<CompaignRule> compaignRule = new HashSet<>();
+*/
 	public Devices() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Devices( String deviceId, Status status) {
+	public Devices( String deviceId,String location, Status status) {
 		super();
-		this.deviceId = deviceId;
+		this.deviceUId = deviceId;
+		this.location = location;
 		this.status = status;
 	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDeviceId() {
-		return deviceId;
+	
+	public String getDeviceUId() {
+		return deviceUId;
 	}
-	public void setDeviceId(String deviceId) {
-		this.deviceId = deviceId;
+	public void setDeviceUId(String deviceId) {
+		this.deviceUId = deviceId;
 	}
+	
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+
 	public Status getStatus() {
 		return status;
 	}
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-
 
 	public Company getCompany() {
 		return company;
@@ -52,14 +97,14 @@ public class Devices {
 	}
 
 
-	public Set<CompaignRule> getCompaignRule() {
+	/*public Set<CompaignRule> getCompaignRule() {
 		return compaignRule;
 	}
 
 
 	public void setCompaignRule(Set<CompaignRule> compaignRule) {
 		this.compaignRule = compaignRule;
-	}
+	}*/
 	
 	
 	

@@ -1,5 +1,8 @@
 package com.proxet.api.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -13,10 +16,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proxet.api.form.AdCompaignForm;
@@ -24,11 +28,13 @@ import com.proxet.api.form.AdContentForm;
 import com.proxet.api.form.CompaignRuleForm;
 import com.proxet.api.form.CompanyEnrollmentForm;
 import com.proxet.api.form.CompanyLoginForm;
-import com.proxet.api.service.AdCompaignRuleService;
-import com.proxet.api.service.AdCompaignService;
-import com.proxet.api.service.AdContentService;
+import com.proxet.api.form.DeviceForm;
+import com.proxet.api.service.CompaignRuleService;
+import com.proxet.api.service.CompaignService;
 import com.proxet.api.service.CompanyService;
+import com.proxet.api.service.ContentService;
 import com.proxet.api.service.DeviceService;
+import com.proxet.api.util.ImageFileAndSave;import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
 @RequestMapping("/company")
@@ -40,17 +46,17 @@ public class CompanyController {
 	@Autowired
 	DeviceService deviceService;
 	@Autowired
-	AdContentService adContentService;
+	ContentService contentService;
 	@Autowired
-	AdCompaignService compaignService;
+	CompaignService compaignService;
 	@Autowired
-	AdCompaignRuleService compaignRuleService;
+	CompaignRuleService compaignRuleService;
 
 	@GetMapping("/")
 	public String index() {
 		return "index";
 	}
-
+	
 	/**
 	 * 
 	 * Company Enroll get request
@@ -88,7 +94,6 @@ public class CompanyController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("CompanyLoginForm") @Validated CompanyLoginForm loginForm, BindingResult result,
 			Model model, HttpServletRequest request) {
-		Model view = null;
 		if (result.hasErrors())
 			return "companylogin";
 		if (companyService.login(loginForm.getEmail(), loginForm.getPassword(), request) == null)
@@ -102,61 +107,89 @@ public class CompanyController {
 		ModelAndView view = new ModelAndView("companyprofile");
 		return view;
 	}
-
-	@GetMapping("/addDevice/{id}")
-	public ModelAndView addDevice(HttpServletRequest request, @PathVariable("id") String deviceIds) {
-		System.out.println(request.getSession().getAttributeNames());
-		int id = (int) request.getSession().getAttribute("id");
-		System.out.println("Requestid : " + id);
-		companyService.AddDevices(deviceIds, id);
-		ModelAndView view = new ModelAndView("companyprofile");
+	
+	@GetMapping("/devices")
+	public ModelAndView getDevices(HttpServletRequest request) {
+		int companyId = (int)request.getSession().getAttribute("id");
+		List<Map<String, Object>> list = deviceService.getDeviceList(companyId);
+		ModelAndView view = new ModelAndView("device");
+		view.addObject("deviceList", list);
 		return view;
 	}
 
-	@RequestMapping(value = "/addContent", method = RequestMethod.GET)
-	public String addContent() {
-		return "addContent";
+	@PostMapping("/addDevice")
+	public ModelAndView addDevice(HttpServletRequest request,
+			@ModelAttribute("deviceForm") @Validated DeviceForm deviceForm) {
+		System.out.println(request.getSession().getAttributeNames());
+		int id = (int) request.getSession().getAttribute("id");
+		System.out.println("Requestid : " + id);
+		ModelAndView view = new ModelAndView("device");
+		List<Map<String, Object>> list = deviceService.AddDevices(deviceForm.getDeviceId(), deviceForm.getLocation(),
+				id);
+		view.addObject("deviceList", list);
+		return view;
+	}
+
+	@RequestMapping(value = "/contents", method = RequestMethod.GET)
+	public ModelAndView addContent(HttpServletRequest request) {
+		int companyId = (int)request.getSession().getAttribute("id");
+		ModelAndView view = new ModelAndView("content");
+		List<Map<String, Object>> list = contentService.getAllAdContents(companyId);
+		view.addObject("contentData", list);
+		return view;
 	}
 
 	@PostMapping("/addContent")
 	public ModelAndView addAdContent(@ModelAttribute("adContentForm") @Validated AdContentForm contentForm,
-			HttpServletRequest request) {
+			@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		int companyId = (int) request.getSession().getAttribute("id");
-
-		companyService.addContent(contentForm.getContentType(), contentForm.getShortNotification(),
-				contentForm.getLongNotification(), companyId);
-		ModelAndView view = new ModelAndView("companyprofile");
+		ModelAndView view = new ModelAndView("content");
+		String filePath = new ImageFileAndSave().saveImageFile(file);
+		List<Map<String, Object>> list=contentService.addContent(filePath, contentForm.getContentType(), contentForm.getName(), contentForm.getShortNotification(), contentForm.getLongNotification(), companyId);
+		view.addObject("contentData", list);
 		return view;
 	}
 
-	@GetMapping(value = "/addCompaign")
-	public String addCompaign() {
-		return "addCompaign";
+	@GetMapping(value = "/compaigns")
+	public ModelAndView addCompaign(HttpServletRequest request) {
+	//	int companyId = (int)request.getSession().getAttribute("id");
+		List<Map<String, Object>> list = compaignService.getCompaignList(2);
+		ModelAndView view = new ModelAndView("compaign");
+		view.addObject("compaignList", list);
+		return view;
 	}
 
 	@PostMapping("/addCompaign")
 	public ModelAndView addAdCompaign(@ModelAttribute("adCompaignForm") AdCompaignForm compaignForm,
 			HttpServletRequest request) {
-		int companyId = (int) request.getSession().getAttribute("id");
-		companyService.addCompaign(request, compaignForm.getTitle(), compaignForm.getStartDate(),
-				compaignForm.getEndDate(), compaignForm.getStartTime(), compaignForm.getEndTime(), companyId);
-		ModelAndView view = new ModelAndView("companyprofile");
+		//int companyId = (int) request.getSession().getAttribute("id");
+		List<Map<String, Object>> list = compaignService.addCompaign(request, compaignForm.getTitle(), compaignForm.getStartDate(),
+				compaignForm.getEndDate(), compaignForm.getStartTime(), compaignForm.getEndTime(), 2);
+		ModelAndView view = new ModelAndView("compaign");
+		view.addObject("compaignList", list);
 		return view;
 	}
 
-	@GetMapping("/addCompaignRule")
-	public String addAdCompaignRule() {
-		return "addCompaignRule";
+	@GetMapping("/compaignRule")
+	public ModelAndView addAdCompaignRule(HttpServletRequest request) {
+		int compaignId = Integer.valueOf(request.getParameter("id"));
+		request.getSession().setAttribute("compaignId", compaignId);
+		List<Map<String, Object>> list=deviceService.getDeviceList(2);
+		Map<String, Object> ruleDetail =compaignRuleService.getCompaignRule(compaignId); 
+		ModelAndView view = new ModelAndView("compaignRule");
+		view.addObject("deviceList", list);
+		view.addObject("ruleDetail", ruleDetail);
+		return view;
 	}
 
 	@PostMapping("/addCompaignRule")
 	public ModelAndView addAdCompaignRule(@ModelAttribute("compaignRuleForm") CompaignRuleForm compaignRuleForm,
 			HttpServletRequest request) {
-		ModelAndView view = new ModelAndView("companyprofile");
-		int companyId = (int) request.getSession().getAttribute("id");
-		int compaignId = (int) request.getSession().getAttribute("compaignId");
-		companyService.addCompaignRule(compaignRuleForm.getTitle(), compaignRuleForm.getStartTime(),
-				compaignRuleForm.getEndTime(), "", compaignRuleForm.getDays(), companyId, compaignId);
+		ModelAndView view = new ModelAndView("compaignRule");
+		//int companyId = (int) request.getSession().getAttribute("id");
+		int compaignId = Integer.valueOf((String) request.getSession().getAttribute("compaignId"));
+		compaignRuleService.addCompaignRule(compaignRuleForm.getTitle(),compaignRuleForm.getContentType(), compaignRuleForm.getStartTime(),
+				compaignRuleForm.getEndTime(), compaignRuleForm.getDevices(), compaignRuleForm.getDays(),compaignRuleForm.getShowContent(),compaignRuleForm.getFrequency(), 2, compaignId);
 		return view;
 	}
 

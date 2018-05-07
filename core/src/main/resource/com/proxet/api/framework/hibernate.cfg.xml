@@ -14,17 +14,17 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
         
-        <mapping resource="com/proxet/api/framework/company.hbm.xml"/> 
+      <!--   <mapping resource="com/proxet/api/framework/company.hbm.xml"/> 
  	  	<mapping resource="com/proxet/api/framework/companyLogin.hbm.xml"/>
  	  	
  	  	<mapping resource="com/proxet/api/framework/content.hbm.xml"/>
  	  	<mapping resource="com/proxet/api/framework/compaign.hbm.xml"/>
  	  	<mapping resource="com/proxet/api/framework/compaignRule.hbm.xml"/>
  	  	<mapping resource="com/proxet/api/framework/devices.hbm.xml"/>
- 	  	
+ 	   -->	
  	  <mapping class="com.proxet.api.model.Company"/>
  	  <mapping class="com.proxet.api.model.CompanyLogin"/>
- 	  <mapping class="com.proxet.api.model.AdContent"/>
+ 	  <mapping class="com.proxet.api.model.Content"/>
  	  <mapping class="com.proxet.api.model.Compaign"/>
  	  <mapping class="com.proxet.api.model.CompaignRule"/>
  	  <mapping class="com.proxet.api.model.Devices"/>

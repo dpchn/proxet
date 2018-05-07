@@ -2,15 +2,12 @@ package com.proxet.api.dao;
 
 import java.io.Serializable;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.proxet.api.model.Company;
 import com.proxet.core.context.AppContext;
 
 public class DAO<T> {
-
 	private Session getSession(){
 		return AppContext.get().openSession();
 	}
@@ -34,7 +31,7 @@ public class DAO<T> {
 			throw e;
 		}finally {
 			if (session.isOpen()){
-                session.close();
+				closeSession();
             }
 			//closeSession();
 		}
@@ -51,9 +48,7 @@ public class DAO<T> {
 		}catch (Exception e) {
 			System.out.println("Exception while company find"+e);
 			throw e;
-		}/*finally{
-			closeSession();
-		}*/
+		}
 	}
 	
 	public boolean update(T object){
@@ -70,7 +65,10 @@ public class DAO<T> {
 			return false;
 		}finally{
 			session.flush();
-			closeSession();
 		}
 	}
+	
+	
+	
+	
 }
