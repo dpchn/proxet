@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import com.proxet.api.model.CompaignRule;
 import com.proxet.core.context.AppContext;
 
-public class CompaignRuleDao extends DAO<CompaignRule>{
+public class CompaignRuleDao extends DAO{
 
 	public int addCompaingRule(CompaignRule compaignRule){
 		return super.save(compaignRule);

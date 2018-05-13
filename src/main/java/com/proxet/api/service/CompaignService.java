@@ -62,8 +62,19 @@ public class CompaignService {
 		return list;
 	}
 	
-	/*public static void main(String[] args) {
+/*	public static void main(String[] args) throws ParseException {
 		CompaignService service =new CompaignService();
 		System.out.println(service.getCompaignList(2).size());
+		CompaignDao dao = AppContext.get().getDAO(CompaignDao.class);
+		
+		String sd = "12-12-2015 20:20";
+		Date d = ConstantPattern.stf.parse("20:20");
+		System.out.println(ConstantPattern.sdf.parse(sd));
+		Date date = dao.find(new Compaign(), 1).getStartDate();
+		System.out.println(date);
+		date.setHours(d.getHours());
+		date.setMinutes(d.getMinutes());
+		
+		System.out.println(date);
 	}*/
 }

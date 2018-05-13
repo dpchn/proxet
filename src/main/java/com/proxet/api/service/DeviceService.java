@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.proxet.api.dao.CompanyDao;
 import com.proxet.api.dao.DeviceDao;
 import com.proxet.api.framework.Status;
+import com.proxet.api.model.CompaignRule;
 import com.proxet.api.model.Company;
 import com.proxet.api.model.Devices;
 import com.proxet.core.context.AppContext;
@@ -73,6 +74,19 @@ public class DeviceService {
 		return deviceList;
 	}
 	
+	
+	public List<Integer> getMappedAdvertisementToDevice(String deviceId){
+		DeviceDao dao = AppContext.get().getDAO(DeviceDao.class);
+		int id = dao.getDeviceByDeviceUId(deviceId).getId();
+		List<Integer> list = dao.listOfRulesForAd(id);
+		return list;
+		
+	}
+	
+	
+	/*public static void main(String[] args) {
+		new DeviceService().getMappedAdvertisementToDevice("CS");
+	}*/
 	/*public static void main(String[] args) {
 		DeviceService service = new DeviceService();
 		List<Map<String, Object>> list = service.mapDevicesInList(2);

@@ -12,6 +12,7 @@ public class CompaignRuleForm {
 	String showContent;
 	String frequency;
 	String segments;
+	int contentId;
 	
 	
 	
@@ -72,6 +73,11 @@ public class CompaignRuleForm {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-	
+	public int getContentId() {
+		return contentId;
+	}
+	public void setContentId(int contentId) {
+		this.contentId = contentId;
+	}	
 	
 }

@@ -1,8 +1,8 @@
 package com.proxet.api.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +18,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.proxet.api.framework.Status;
@@ -69,16 +68,21 @@ public class CompaignRule {
 	@Column(name="SHOW_CONTENT")
 	private String showContent;
 	
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL,targetEntity=Content.class)
+	@JoinColumn(name="CONTENT_ID")
+	private Content content;
+	
 	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL,targetEntity=Devices.class)
 	@JoinTable(name = "device_compaign_rule_mmaping", catalog="proxet", joinColumns = { @JoinColumn(name = "COMPAIGN_RULE_ID", referencedColumnName="ID") }, inverseJoinColumns = { @JoinColumn(name = "DEVICE_ID", referencedColumnName="ID") })
-	private Set<Devices> devices =  new HashSet<Devices>();
+	private List<Devices> devices =  new ArrayList<Devices>();
 	
-	public CompaignRule(Compaign compaign, String contentType, Company company, String scheduleDays, Date startTime,
-			Date endTime, Set<Devices> devices, Status status, String title, String showContent, String frequency) {
+	public CompaignRule(Compaign compaign, Company company,Content content,String contentType, String scheduleDays, Date startTime,
+			Date endTime, List<Devices> devices, Status status, String title, String showContent, String frequency) {
 		super();
 		this.compaign = compaign;
-		ContentType = contentType;
+		this.ContentType = contentType;
 		this.company = company;
+		this.content = content;
 		this.scheduleDays = scheduleDays;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -112,11 +116,11 @@ public class CompaignRule {
 		this.showContent = showContent;
 	}
 
-	public Set<Devices> getDevices() {
+	public List<Devices> getDevices() {
 		return devices;
 	}
 
-	public void setDevices(Set<Devices> devices) {
+	public void setDevices(List<Devices> devices) {
 		this.devices = devices;
 	}
 
@@ -137,6 +141,14 @@ public class CompaignRule {
 	}
 	
 	
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
 	public String getContentType() {
 		return ContentType;
 	}
@@ -158,11 +170,11 @@ public class CompaignRule {
 		this.title = title;
 	}
 
-	public Set<Devices> getDevice() {
+	public List<Devices> getDevice() {
 		return devices;
 	}
 
-	public void setDevice(Set<Devices> device) {
+	public void setDevice(List<Devices> device) {
 		this.devices = device;
 	}
 	

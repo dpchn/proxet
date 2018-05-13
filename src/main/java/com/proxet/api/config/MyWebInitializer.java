@@ -7,10 +7,11 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 import java.io.File;
 
-public class MyWebInitializer extends
-        AbstractAnnotationConfigDispatcherServletInitializer {
+public class MyWebInitializer
+/*  extends
+        AbstractAnnotationConfigDispatcherServletInitializer*/ {
 
-    private int maxUploadSizeInMb = 20 * 1024 * 1024; // 20 MB
+/*    private int maxUploadSizeInMb = 20 * 1024 * 1024; // 20 MB
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
@@ -40,6 +41,6 @@ public class MyWebInitializer extends
 
         registration.setMultipartConfig(multipartConfigElement);
 
-    }
+    }*/
 
 }

@@ -148,7 +148,7 @@ th, td {
 							<td>${data.startDate }</td>
 							<td>${data.endDate }</td>
 							<td>${data.status }</td>
-							<td><a href="/company/compaignRule?id=${data.id}">View</a></td><td><a href="/company/compaignRule?id=${data.id}">Delete</a></td>
+							<td><a href="/company/compaignRule?compaignId=${data.id}">View</a></td><td><a href="/company/compaignRule?compaignId=${data.id}">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tr>

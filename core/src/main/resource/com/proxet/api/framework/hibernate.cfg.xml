@@ -10,9 +10,9 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/proxet</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
-        <property name="use_sql_comments">true</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="use_sql_comments">false</property>
         
       <!--   <mapping resource="com/proxet/api/framework/company.hbm.xml"/> 
  	  	<mapping resource="com/proxet/api/framework/companyLogin.hbm.xml"/>
@@ -28,6 +28,7 @@
  	  <mapping class="com.proxet.api.model.Compaign"/>
  	  <mapping class="com.proxet.api.model.CompaignRule"/>
  	  <mapping class="com.proxet.api.model.Devices"/>
+ 	  <mapping class="com.proxet.api.model.User"/>
  	  
  	  
     </session-factory>

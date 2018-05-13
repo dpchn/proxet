@@ -146,12 +146,12 @@ div.middle_top_div {
 					<th>Edit</th>
 					<c:forEach items="${contentData }" var="data">
 						<tr>
-							<td class="td_class">1</td>
+							<td class="td_class">${data.sn }</td>
 							<td>${data.name }</td>
 							<td>${data.notification }</td>
 							<td>Compaigns</td>
-							<td>${data.conentType }</td>
-							<td><img src=${data.file } width="100" height="100" /></td>
+							<td>${data.conentType}</td>
+							<td><img src="${data.file}" width="100" height="100" /></td>
 							<td>${data.createdOn }</td>
 							<td>Edit</td>
 						</tr>

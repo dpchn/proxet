@@ -128,7 +128,8 @@ th, td {
 			data-target="#myModal">Add Rule</button>
 	</div>
 	<div>
-		<h1>Compaing : </h1>
+		<h1>Compaing : 
+		${request.getContextPath()}</h1>
 	</div>
 	<div class="middle_div">
 		<div>
@@ -148,7 +149,7 @@ th, td {
 							<td>${ruleDetail.endDate }</td>
 							<td>${ruleDetail.device }</td>
 							<td>${ruleDetail.status }</td>
-							<td><button value="Edit"><a href="/company/compaignRule?id${ruleDetail.id}"></a> </button></td>
+							<td><button value="Edit"><a href="/company/compaignRule?ruleid=${ruleDetail.id}"></a> </button></td>
 						</tr>
 				</tr>
 			</table>
@@ -177,7 +178,14 @@ th, td {
 								<option value="url">Url</option>
 							</select>
 						</div>
-
+						<div>
+							<label class="label">Content Id :</label> <select
+								name="contentId">
+								<c:forEach items="${contentList}" var="content">
+									<option value="${content }">${content}</option>
+								</c:forEach>
+							</select>
+						</div>
 						<div>
 							<label class="label">Title : </label> <input type="text"
 								name="title" />
