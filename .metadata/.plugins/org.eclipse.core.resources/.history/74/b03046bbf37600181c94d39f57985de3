@@ -1,0 +1,31 @@
+package com.demo.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.demo.config.Data;
+import com.demo.config.Roles;
+
+
+
+public class UserService {
+
+	public void login() {
+		new Data().login();
+	}
+	//@PreAuthorize("hasRole('PARTY')")
+	public String getName() {
+		return "Durga";
+	}
+
+	
+//	@PreAuthorize("hasRole('USER')")
+	public Map<String, String> findAll(Roles roles) {
+		Map<String, String> map = new Data().getData(roles);
+		if(map.length()==0)
+			return new HashMap<String, String>().put("NotValid", "Not Authenticate");
+		return map ;
+		
+		
+	}
+}

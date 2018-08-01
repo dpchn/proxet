@@ -1,0 +1,18 @@
+
+public class PolymorphismExample {
+
+}
+
+class Parent {
+	public static void show() {
+
+	}
+
+	public void test() {
+
+	}
+
+	public final void finalMethod() {
+
+	}
+}

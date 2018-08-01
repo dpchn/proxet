@@ -1,0 +1,251 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+body {
+	margin: 0;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+div.form {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	width: 30%;
+	margin-left: 450px;
+	margin-top: 150px;
+}
+
+ul {
+	list-style-type: none;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	width: 25%;
+	background-color: #f1f1f1;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+}
+
+li a {
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+li a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+li a:hover {
+	background-color: #555;
+	color: white;
+}
+
+div.topdiv {
+	list-style-type: none;
+	margin: 20x;
+	padding: 30px;
+	overflow: hidden;
+	background-color: black;
+}
+
+div.middle_top_div {
+	list-style-type: none;
+	height: 530px;
+	margin-left: 320px;
+	padding: 30px;
+	overflow: hidden;
+	background-color: white;
+}
+
+.right_conrer_button {
+	position: absolute;
+	top: 100px;
+	right: 16px;
+	font-size: 18px;
+}
+
+.middle_div {
+	list-style-type: none;
+	height: 500px;
+	padding: 30px;
+	overflow-y: scroll;
+	background-color: white;
+}
+
+.outset {
+	border-style: outset;
+}
+
+th, td {
+	width: 100px;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<div class="topdiv"></div>
+<ul>
+	<li><a href="dashboard">Dashboard</a></li>
+	<li><a href="analytics">Analytics</a></li>
+	<li><a href="devices">Devices</a></li>
+	<li><a href="contents">Contents</a></li>
+	<li><a class="active" href="compaigns">Compaings</a></li>
+</ul>
+
+<div class="middle_top_div">
+	<div class="right_conrer_button">
+		<button type="button" class="btn btn-info" data-toggle="modal"
+			data-target="#myModal">Add Rule</button>
+	</div>
+	<div>
+		<h1>Compaing : 
+		${request.getContextPath()}</h1>
+	</div>
+	<div class="middle_div">
+		<div>
+			<table class="table">
+				<tr>
+					<th>Title</th>
+					<th>Content Type</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Device Assigned</th>
+					<th>Status</th>
+					<th>Action</th>
+						<tr>
+							<td>${ruleDetail.title }</td>
+							<td>${ruleDetail.contentType }</td>
+							<td>${ruleDetail.startDate }</td>
+							<td>${ruleDetail.endDate }</td>
+							<td>${ruleDetail.device }</td>
+							<td>${ruleDetail.status }</td>
+							<td><button value="Edit"><a href="/company/compaignRule?ruleid=${ruleDetail.id}"></a> </button></td>
+						</tr>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Add Rule</h4>
+					
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form commandName="compaignRuleForm" method="post" action="addCompaignRule">
+						<div>
+							<label class="label">Content Type :</label> <select
+								name="contentType">
+								<option value="image">Image</option>
+								<option value="video">Video</option>
+								<option value="url">Url</option>
+							</select>
+						</div>
+						<div>
+							<label class="label">Content Id :</label> <select
+								name="contentId">
+								<c:forEach items="${contentList}" var="content">
+									<option value="${content }">${content}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div>
+							<label class="label">Title : </label> <input type="text"
+								name="title" />
+						</div>
+						<div>
+							<label class="label">Schedule Days :</label>
+
+							<div>
+								<input type="checkbox" name="days" value="monday" />Mon <input
+									type="checkbox" name="days" value="tuesday" />Tue <input
+									type="checkbox" name="days" value="wednesday" />Wed <input
+									type="checkbox" name="days" value="thursday" />Thu <input
+									type="checkbox" name="days" value="friday" />Fri <br> <input
+									type="checkbox" name="days" value="saturday" />Sat <input
+									type="checkbox" name="days" value="sunday" />Sun
+							</div>
+						</div>
+						<div>
+							<label class="label">Start Time :</label> <input type="text"
+								name="startTime" />
+						</div>
+						<div>
+							<label class="label">End Time :</label> <input type="text"
+								name="endTime" />
+						</div>
+						<div>
+							<label class="label">Show Content :</label>
+
+							<div>
+								<input type="radio" name="showContent" value="any">Any <br>
+								<input type="radio" name="showContent" value="OfferList">
+								In Offer List <br> <input type="radio" name="showContent"
+									value="pushNotification">InPush Notification
+							</div>
+						</div>
+						<div>
+						
+							<label class="label">Device Assigned :</label> <select
+								name="devices" multiple="multiple">
+								<c:forEach items="${deviceList}" var="device">
+									<option value="${device.deviceId }">${device.deviceId }</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div>
+							<label class="label">Frequency :</label> <select name="frequency">
+								<option value="SS">SS</option>
+								<option value="Shello">hello</option>
+								<option value="once">Only Once</option>
+								<option value="onceEvery">Once very 15 min</option>
+							</select>
+						</div>
+						<div>
+							<input type="submit" value="Add" class="btn btn-primary" />
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

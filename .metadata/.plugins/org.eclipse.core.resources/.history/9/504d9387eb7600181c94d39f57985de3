@@ -1,0 +1,14 @@
+package com.demo.config;
+
+public class Data {
+
+	String name="Duga";
+	String contact="8791424214";
+	
+	public String getData(Roles roles){
+		if(roles.equals(""))
+			return name;
+		else
+			return name+" "+contact;
+	}
+}

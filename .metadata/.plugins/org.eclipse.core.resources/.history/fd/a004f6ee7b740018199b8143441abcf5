@@ -1,0 +1,22 @@
+
+public class AbstractClassExample extends Ex{
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args) {
+		new AbstractClassExample().show();
+	}
+
+}
+
+
+abstract class Ex{
+	public abstract void show();
+	public void test(){
+		System.out.println("Hello");
+	}
+}

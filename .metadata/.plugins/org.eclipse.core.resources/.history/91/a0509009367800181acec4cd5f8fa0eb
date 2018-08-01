@@ -1,0 +1,30 @@
+package NestedVsInner;
+
+public class NestedExample {
+
+	public static void main(String[] args) {
+		NestedExample example = new NestedExample();
+		NestedExample.A a = new NestedExample.A();
+		NestedExample.A a1 =  example.new A();
+		a.test();
+		NestedExample.A.B b = new NestedExample.A.B();
+		b.test();
+	}
+	
+	
+	static class A{
+		void test(){
+			System.out.println("A class method");
+		}
+		static class B{
+			void test(){
+				System.out.println("B class method");
+			}
+			static class C{
+				void test(){
+					System.out.println("C class method");
+				}
+			}
+		}
+	}
+}

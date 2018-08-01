@@ -119,7 +119,7 @@ th, td {
 	<li><a href="dashboard">Dashboard</a></li>
 	<li><a href="analytics">Analytics</a></li>
 	<li><a href="devices">Devices</a></li>
-	<li><a  href="contents">Contents</a></li>
+	<li><a href="contents">Contents</a></li>
 	<li><a class="active" href="compaigns">Compaigns</a></li>
 </ul>
 
@@ -148,7 +148,8 @@ th, td {
 							<td>${data.startDate }</td>
 							<td>${data.endDate }</td>
 							<td>${data.status }</td>
-							<td><a href="/company/compaignRule?compaignId=${data.id}">View</a></td><td><a href="/company/compaignRule?compaignId=${data.id}">Delete</a></td>
+							<td><a href="/company/compaignRule?compaignId=${data.id}">View</a></td>
+							<td><a href="/company/compaignRule?compaignId=${data.id}">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tr>
@@ -198,8 +199,10 @@ th, td {
 								<!-- <td><h:errors property="firstName" /></td> -->
 							</tr>
 							<tr>
-								<td align="center" colspan="2"><input type="submit" value="Add" class="btn-info" />
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button></td>
+								<td align="center" colspan="2"><input type="submit"
+									value="Add" class="btn-info" />
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Close</button></td>
 							</tr>
 						</table>
 					</form>
@@ -209,39 +212,3 @@ th, td {
 	</div>
 </div>
 </html>
-
-<!-- <h1 align="center">Welcome to Registration Page</h1>
-<form th:action="/addCompaign" commandName="adCompaignForm"
-	method="post">
-  
-	<table align="center">
-		<tr>
-			<th>Title :</th>
-			<td><input type="text" name="title" /></td>
-			<td><h:errors property="firstName" /></td>
-		</tr>
-		<tr>
-			<th>Start Date :</th>
-			<td><input type="text" name="startDate" /></td>
-			<td><h:errors property="firstName" /></td>
-		</tr>
-		<tr>
-			<th>Start Time :</th>
-			<td><input type="text" name="startTime" /></td>
-			<td><h:errors property="firstName" /></td>
-		</tr>
-		<tr>
-			<th>End Date :</th>
-			<td><input type="text" name="endDate" /></td>
-			<td><h:errors property="firstName" /></td>
-		</tr>
-		<tr>
-			<th>End Time :</th>
-			<td><input type="text" name="endTime" /></td>
-			<td><h:errors property="firstName" /></td>
-		</tr>
-		<tr>
-			<th align="center"><input type="submit" value="Add" /></th>
-		</tr>
-	</table>
-</form> -->

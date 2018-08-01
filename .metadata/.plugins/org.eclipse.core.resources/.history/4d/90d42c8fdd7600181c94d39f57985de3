@@ -1,0 +1,22 @@
+package com.service;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+
+import com.dao.UserDeatilsDao;
+
+public class UserDetailsService {
+
+	@PreAuthorize("hasRole('USER_READ')" )
+	public String getUserDeatils(){
+		UserDeatilsDao dao = new UserDeatilsDao();
+		return "Name "+dao.getName()+" Email : "+dao.getEmail()+" Contact : "+dao.getContact();
+	}
+	
+	
+	
+	@PreAuthorize("hasAuthority('USER_READ') and hasAuthority('TEMP_READ')")
+	public String getLimittedUserDeatils(){
+		UserDeatilsDao dao = new UserDeatilsDao();
+		return "Name "+dao.getName()+" Email : "+dao.getEmail();
+	}
+}

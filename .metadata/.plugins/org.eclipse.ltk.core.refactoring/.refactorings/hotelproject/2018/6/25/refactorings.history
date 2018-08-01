@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ApplicationWebMvcConfig.java&apos; to &apos;AuthDemo/src/main/java/com.demo.config&apos;&#x0D;&#x0A;- Original project: &apos;hotelproject&apos;&#x0D;&#x0A;- Destination element: &apos;AuthDemo/src/main/java/com.demo.config&apos;&#x0D;&#x0A;- Original element: &apos;com.hotelproject.api.config.ApplicationWebMvcConfig.java&apos;" description="Copy compilation unit" destination="=AuthDemo/src\/main\/java&lt;com.demo.config" element1="/src\/main\/java&lt;com.hotelproject.api.config{ApplicationWebMvcConfig.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1529760011582" units="1" version="1.0"/>
+</session>

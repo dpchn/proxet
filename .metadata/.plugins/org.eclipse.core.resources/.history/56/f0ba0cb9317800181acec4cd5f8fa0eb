@@ -1,0 +1,18 @@
+package exceptionHandling;
+
+public class SuperKeywordExample {
+
+}
+
+class SuperClass{
+	int a=10;
+	int b;
+	public SuperClass(int a){
+		this.a = a;
+	}
+	
+	public SuperClass(int a, int b){
+		this.a = a;
+		this.b = b;
+	}
+}

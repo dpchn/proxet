@@ -1,0 +1,37 @@
+
+public class RightRotate {
+
+	public static void main(String[] args) {
+		int arr[] = {1,2,3,4,5};
+		int n=5;
+		int k=2;
+		
+		for(int i=n-1; i>n-gdc(k,n); i--){  
+            rightRotate(arr, i,i, k);
+        }
+		for(int j=0; j<n; j++)
+            System.out.print(arr[j]+" ");
+        System.out.println();
+	}
+	
+	static int gdc(int a, int b){
+		if(b==0)
+			return a;
+		return gdc(b, a%b);
+	}
+	
+	static void rightRotate(int arr[], int i,int j, int d){
+        int len = 5; 
+        int temp = arr[i];
+        while(true){
+            int k = j-d;
+            if(k<0)
+                k = k+len;
+            if(k==i)
+                break;
+            arr[j] =arr[k];
+            j=k;
+        }
+        arr[j] = temp;
+    }
+}

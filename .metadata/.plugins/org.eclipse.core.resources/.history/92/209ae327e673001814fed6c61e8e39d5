@@ -1,0 +1,7 @@
+
+public final class FinalClassExample {
+
+	public static void main(String[] args) {
+		
+	}
+}

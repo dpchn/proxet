@@ -1,0 +1,21 @@
+package array;
+
+public class MaxSumOfSubArray {
+
+	public static void main(String[] args) {
+		int arr[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+	}
+	
+	static int maxSum(int arr[]){
+		int possibleMax=0;
+		int tempMax=0;
+		for(int i=0; i<arr.length; i++){
+			tempMax +=arr[i];
+		if(tempMax<0)
+			tempMax=0;
+		if(possibleMax<tempMax)
+			possibleMax=tempMax;
+		}
+		return possibleMax;
+	}
+}

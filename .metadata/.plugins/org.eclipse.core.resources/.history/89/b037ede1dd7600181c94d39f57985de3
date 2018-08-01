@@ -1,0 +1,9 @@
+package com.devglan.service;
+
+import java.util.Map;
+
+public interface UserService {
+
+    Map<String, String> findAll();
+    String getName();
+}

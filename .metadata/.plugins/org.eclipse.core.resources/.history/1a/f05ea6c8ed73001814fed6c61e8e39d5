@@ -1,0 +1,19 @@
+
+public interface InterFaceExample extends i1 {
+
+	public void test();
+}
+
+
+interface i1{
+	public void show();
+}
+
+interface im extends i1{
+	
+}
+
+
+ class Test implements InterFaceExample{
+	
+}

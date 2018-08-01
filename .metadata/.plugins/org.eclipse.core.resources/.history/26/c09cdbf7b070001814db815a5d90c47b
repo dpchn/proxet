@@ -1,0 +1,52 @@
+package com.hotelproject.api.model;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Embeddable
+@Table(name="USER", catalog="hotelproject")
+public class User {
+
+	
+	int id;
+	@Column(name="NAME", nullable=false)
+	String name;
+	@Column(name="EMAIL", nullable=false)
+	String email;
+	
+
+	public User(){
+		
+	}
+	
+	public User(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+
+}

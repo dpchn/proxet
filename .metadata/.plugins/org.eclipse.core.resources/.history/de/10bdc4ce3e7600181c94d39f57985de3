@@ -1,0 +1,14 @@
+
+public class GDCCalculate {
+
+	public static void main(String[] args) {
+		System.out.println(gdc(12,7+1));
+	}
+	
+	static int gdc(int a, int b){
+		if(b==0)
+			return a;
+		else
+			return gdc(b,a%b);
+	}
+}

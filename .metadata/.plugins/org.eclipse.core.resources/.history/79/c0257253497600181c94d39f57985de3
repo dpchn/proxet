@@ -1,0 +1,56 @@
+package LinkList;
+
+import java.util.Random;
+
+public class ReverseLinkList {
+
+	public static void main(String[] args) {
+		Random random = new Random();
+		int t = 5;
+		Node head = new Node();
+		head.setData(random.nextInt(100));
+		head.setNext(null);
+		Node c = null;
+		while (t-- > 0) {
+			Node p = head;
+			Node newNode = new Node();
+			newNode.setData(random.nextInt(100));
+			newNode.setNext(null);
+			while (p.getNext() != null) {
+				p = p.getNext();
+			}
+			p.setNext(newNode);
+			c = newNode;
+		}
+		
+		Node p =head;
+		while(p.getNext() !=null){
+			System.out.println(p.getData());
+			p = p.getNext();
+		}
+		System.out.println("Rever....");
+		Node revereList  = reverseLinkList(head);
+		while(revereList.getNext() !=null){
+			System.out.println(revereList.getData());
+			revereList = revereList.getNext();
+		}
+	}
+	
+	static Node reverseLinkList(Node head){
+		Node prev, nextNode, p=head;
+		prev = p;
+		prev.setNext(null);
+
+		System.out.println(prev.getData());
+		p=p.getNext();
+		while(p!=null){
+			System.out.println(prev.getData());
+			nextNode = p.getNext();
+			p.setNext(prev);
+			prev = p;
+			p = nextNode;
+			
+		}
+		return prev;
+	}
+}

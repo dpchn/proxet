@@ -1,0 +1,9 @@
+
+public class OuterClass {
+
+	class InnerClass{
+		public void show(){
+			System.out.println("Innner Class");
+		}
+	}
+}

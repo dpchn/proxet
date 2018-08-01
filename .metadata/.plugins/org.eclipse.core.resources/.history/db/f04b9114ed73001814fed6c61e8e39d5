@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
+
+public class CollectionFramwWork {
+
+	public static void main(String[] args) {
+		LinkedList<Integer> linkedList = new LinkedList<>();
+		TreeSet<Integer> treeSet = new TreeSet<>();
+		treeSet.add(1);
+		treeSet.add(20);
+		treeSet.add(10);
+		treeSet.add(0);
+		System.out.println(treeSet);
+		List<Integer> list = new ArrayList<>();
+		list.add(34);
+		list.add(3);
+		list.add(12);
+		list.add(4);
+		Collections.sort(list,(x,y)->x-y);
+
+	}
+}
+
+
+class Mycomparable implements Comparable{
+
+	@Override
+	public int compareTo(Object o) {
+		if(o.)
+		return 0;
+	}
+	
+}

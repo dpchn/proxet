@@ -1,0 +1,20 @@
+package exceptionHandling;
+
+public class ThisKeywordExample {
+
+	
+	int a;
+	int b =20;
+	public ThisKeywordExample(int val) {
+		// TODO Auto-generated constructor stub
+		this.a=val;
+	}
+	
+	public ThisKeywordExample(int val, int y) {
+		// TODO Auto-generated constructor stub
+		this(50);
+	}
+	public static void main(String[] args) {
+		System.out.println("This keyword with body"+ );
+	}
+}

@@ -1,0 +1,21 @@
+package NestedVsInner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Sample {
+
+	public static void main(String[] args) {
+		//int sqlist[] = new int[n];
+				List<List<Integer>> list[] = new ArrayList[4];
+				List<Integer> l1 =new ArrayList<>();
+				l1.add(2);
+				l1.add(3);
+				list[0].add(l1);
+				List<Integer> l2 = new ArrayList<>();
+				l2.add(4);
+				l2.add(5);
+				list[1].add(l2);
+				System.out.println(list);
+	}
+}

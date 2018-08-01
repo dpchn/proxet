@@ -1,0 +1,9 @@
+package com.serverconfig;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@Enablr
+public class ResourceServerConfiguration {
+
+}

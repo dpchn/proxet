@@ -1,0 +1,9 @@
+package com.hotelproject.api.service;
+
+public class HotelService {
+	
+	public void bookHotel(String hotelName, String hotelId, String startDate, String endDate, int noOfPeople){
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+
+public final class FinalClassExample {
+
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+}
+
+
+final class FinalClass{
+	public void show(){
+		System.out.println("Hello world");
+	}
+}

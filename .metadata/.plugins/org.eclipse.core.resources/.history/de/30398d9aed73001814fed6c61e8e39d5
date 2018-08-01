@@ -1,0 +1,13 @@
+
+public interface InterFaceExample extends i1 {
+
+}
+
+
+interface i1{
+	
+}
+
+interfacei2 im{
+	
+}

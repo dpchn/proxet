@@ -1,13 +1,9 @@
 package com.proxet.core.context;
 
 import org.hibernate.Session;
-
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import com.proxet.api.dao.DAO;
-
-import java.util.logging.Logger;
 
 public class AppContext {
 	// private static final Logger logger =

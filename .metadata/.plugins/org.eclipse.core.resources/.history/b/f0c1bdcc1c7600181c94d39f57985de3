@@ -1,0 +1,9 @@
+
+public class StockBuySellExample {
+
+	
+}
+
+class Position{
+	int buy, sell;
+}

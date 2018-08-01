@@ -1,0 +1,12 @@
+package exceptionHandling;
+
+import java.util.EmptyStackException;
+
+public class ThrowExample {
+
+	public static void main(String[] args)  {
+		int num = 10;
+		if(num==0)
+		throw new EmptyStackException(); // Throw manually excaption
+	}
+}

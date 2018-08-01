@@ -1,0 +1,67 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class PolymorphismExample {
+
+	public void show(){
+		System.out.println("Hello Shows");
+	}
+	
+	public void show(int a){
+		System.out.println("Num is " + a);
+	}
+	
+	public int show(int a, int b){
+		return a+b;
+	}
+	
+	public static void staticMethod(){
+		System.out.println("Static method without Parameter");
+	}
+	
+	public static void staticMethod(int a){
+		System.out.println("Static method with Parameter "+ a);
+	}
+	
+	
+	 public static void main(String[] args) throws InterruptedException {
+	        List<String> inputByLine = new ArrayList<String>();
+	        Character arr[] = {'a','e','i','o','u','A','E','O','U','I'};
+	        List<Character> vowels = Arrays.asList(arr);
+	        try {
+	            // Get the object of DataInputStream
+	            InputStreamReader isr = new InputStreamReader(System.in,"UTF-8");
+	            BufferedReader br = new BufferedReader(isr);
+	            String line = "";
+	           /* while ((line = br.readLine()) != null){
+	                inputByLine.add(line.toString());
+	            }*/
+	            int c =0;
+	            System.out.println(vowels.contains('a'));
+	            /*for (String line2 : inputByLine){
+	                if(vowels.contains(line2.charAt(0)))
+	                c++;
+	            }*/
+	            
+	            System.out.println("Hello "+c);
+	            isr.close();
+	        } catch (IOException ioe) {
+	            ioe.printStackTrace();
+	        }
+	    }/*
+	public static void main(String[] args) {
+		PolymorphismExample example = new PolymorphismExample();
+		example.show();
+		example.show(1);
+		example.show(1, 2);
+		
+		String arr[] = {"a"};
+		List<Character> lis;
+		lis.con
+		
+	}*/
+}

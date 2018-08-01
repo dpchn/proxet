@@ -1,0 +1,74 @@
+package com.hotelproject.api.service;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.hotelproject.api.dao.UserDao;
+import com.hotelproject.api.model.Hotel;
+import com.hotelproject.api.model.User;
+
+
+@Service
+public class UserService {
+	
+	public Map<String,String> addUser(String name, String email){
+		User user  = new User(name, email);
+		UserDao dao = new UserDao();
+		int id = dao.addUser(user);
+		Map map = new HashMap<String, String>();
+		if(id==0)
+			return null;
+		else{
+			System.out.println("Register");
+			map.put("name", user.getName() );
+			map.put("email", user.getEmail());
+			return map;
+		}			
+	}
+	
+	
+	public Map<String, String> login(String email){
+		UserDao dao = new UserDao();
+		User user=  dao.login(email);
+		if(user==null){
+			return null;
+		}else{
+			//String lastLogin = user.getLastlogintime().toString();
+			String lastLogin= "kdafhk";
+			user.setLastlogintime(new java.util.Date());
+			dao.updateUser(user);
+			System.out.println(lastLogin);
+			Map map = new HashMap<String,String>();
+			map.put("name", user.getName());
+			map.put("email", user.getEmail());
+			map.put("lastLogin", lastLogin);
+			return map;
+		}
+	}
+	
+	public List<Map<String, String>> getBookedHotel(int id){
+		User user = new User();
+		UserDao dao = new UserDao();
+		user = dao.getUser(id);
+		List<Hotel> hotels = user.getBookedHotel();
+		List<Map<String, String>> bookedHotels = new ArrayList<Map<String,String>>();
+		Map<String, String> map = new HashMap<String, String>();
+		hotels.forEach((hotel)->{
+			map.put("hotelName", hotel.getHotelName());
+			map.put("startDate", hotel.getStartDate());
+			map.put("endDate", hotel.getEndDate());
+			bookedHotels.add(map);
+		});
+		return bookedHotels;
+	}
+	
+	public static void main(String[] args) {
+		new UserService().login("dp20101@gmail.com");
+	}
+
+}

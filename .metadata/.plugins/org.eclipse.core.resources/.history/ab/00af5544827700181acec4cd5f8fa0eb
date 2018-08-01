@@ -1,0 +1,16 @@
+package exceptionHandling;
+
+public class ThrowsExample {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	static void catchMethod(){
+		try{
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}

@@ -1,0 +1,21 @@
+package exceptionHandling;
+
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ThrowExample {
+
+	int a =0;
+	public static void main(String[] args)  {
+		int num = 0;
+		if(num==0)
+		throw new EmptyStackException(); // Throw manually excaption
+		List<Integer> l= new ArrayList<>();
+		LinkedList<Integer> ll= new LinkedList<>();
+		
+			
+		}
+	}
+}

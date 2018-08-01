@@ -1,0 +1,5 @@
+package com.hotelproject.api.dao;
+
+public class HotelDao {
+
+}

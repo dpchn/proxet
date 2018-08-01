@@ -1,0 +1,15 @@
+package com.demo.config;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Permission {
+
+	Map<String, List<Roles>> map = new HashMap<>();
+	public void getPermission(){
+		Roles bothPermission[] = {Roles.USER, Roles.PARTY}; 
+		map.put("name", new ArrayList<Roles>(bothPermission));
+	}
+}

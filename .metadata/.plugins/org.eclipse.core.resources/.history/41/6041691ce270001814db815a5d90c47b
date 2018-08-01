@@ -1,0 +1,5 @@
+package com.hotelproject.api.form;
+
+public class HotelForm {
+
+}

@@ -1,0 +1,33 @@
+package com.demo.controller;
+
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.config.Roles;
+import com.demo.service.UserService;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+    public Map<String, String> login(){
+        return new UserService().login();
+    }
+	
+    @RequestMapping(value="/user", method = RequestMethod.GET)
+    public Map<String, String> listUser(){
+        return new UserService().findAll(Roles.USER);
+    }
+    
+    @RequestMapping(value="/party", method = RequestMethod.GET)
+    public Map<String, String> infoUser(){
+        return new UserService().findAll(Roles.PARTY);
+    }
+   
+
+}

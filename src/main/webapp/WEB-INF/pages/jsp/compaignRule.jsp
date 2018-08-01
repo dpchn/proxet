@@ -128,8 +128,7 @@ th, td {
 			data-target="#myModal">Add Rule</button>
 	</div>
 	<div>
-		<h1>Compaing : 
-		${request.getContextPath()}</h1>
+		<h1>Compaing : </h1>
 	</div>
 	<div class="middle_div">
 		<div>

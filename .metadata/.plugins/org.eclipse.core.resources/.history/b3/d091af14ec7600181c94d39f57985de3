@@ -1,0 +1,21 @@
+package com.demo.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Data {
+
+	String name="Duga";
+	String contact="8791424214";
+	
+	public Map<String, String> getData(Roles roles){
+		Map<String, String> map = new HashMap<>();
+		if(roles.equals("USER")){
+		map.put("Name", "Durga");
+		map.put("Contact", "8791424214");
+		}else{
+			map.put("Name", "Durga");
+		}
+		return map;
+	}
+}

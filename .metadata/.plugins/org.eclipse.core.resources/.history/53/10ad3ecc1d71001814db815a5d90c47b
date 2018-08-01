@@ -1,0 +1,10 @@
+package com.hotelproject.api.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="hotel_booking",catalog="hotelproject")
+public class Hotel {
+
+}

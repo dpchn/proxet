@@ -1,0 +1,14 @@
+package com.hotelproject.api.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hotelproject.api.model.Hotel;
+
+@Service
+public class HotelService {
+	
+	public void bookHotel(String hotelName, String hotelId, String startDate, String endDate, int noOfPeople, String city, int userId){
+		Hotel bookedHotel = new Hotel(hotelId, hotelName, city, noOfPeople, endDate, startDate);
+	}
+
+}

@@ -1,0 +1,22 @@
+
+public class OuterClass {
+
+	class InnerClass{
+		public void show(){
+			System.out.println("Innner Class");
+		}
+	}
+	
+	
+	static class StaticClass{
+		public void show(){
+			System.out.println("Static class");
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		OuterClass outerClass = new OuterClass();
+		OuterClass.InnerClass innerClass = outerClass.new InnerClass();
+	}
+}

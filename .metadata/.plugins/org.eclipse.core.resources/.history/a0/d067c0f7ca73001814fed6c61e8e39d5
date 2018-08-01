@@ -1,0 +1,21 @@
+
+public class PolymorphismExample {
+
+}
+
+class Parent {
+	public static void show() {
+
+		System.out.println("Static method");
+	}
+
+	public void test() {
+
+		System.out.println("normal method");
+	}
+
+	public final void finalMethod() {
+
+		System.out.println("final method");
+	}
+}

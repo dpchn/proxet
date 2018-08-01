@@ -49,6 +49,29 @@ public class CompanyDao extends DAO<Company> {
 	}
 	
 	
+	
+	public int isEmailExist(String email){
+		Session session = AppContext.get().openSession();
+		String sql = "from com.proxet.api.model.Company where EMAIL=:email";
+		Query query = session.createQuery(sql);
+		query.setParameter("email", email);
+		return query.getFirstResult();
+	}
+	
+	
+	
+	/*public static void main(String[] args) {
+		System.out.println(new CompanyDao().isEmailExist("pokhariyaganesh28@gmail.com"));
+		//new CompanyDao().isEmailExist("pokhariyaganesh28@gmail.com");
+	}*/
+	public int isContactExist(String phone){
+		Session session = AppContext.get().openSession();
+		String sql = "Select COMPANY_ID from company where PHONE=:phone";
+		Query query = session.createQuery(sql);
+		query.setParameter("phone", phone);
+		return query.getFirstResult();
+	}
+	
 	public Company find(Company company, int id){
 		return (Company) super.find(company, id);
 	}

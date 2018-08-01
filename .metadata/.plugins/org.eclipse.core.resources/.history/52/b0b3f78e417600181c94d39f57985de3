@@ -1,0 +1,10 @@
+package array;
+
+public class CheckLoopInLinkList {
+
+}
+
+class Node{
+	int data;
+	Node next;
+}

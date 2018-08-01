@@ -1,0 +1,17 @@
+package com.service;
+
+import com.dao.UserDeatilsDao;
+
+public class UserDetailsService {
+
+	
+	public String getUserDeatils(){
+		UserDeatilsDao dao = new UserDeatilsDao();
+		return "Name "+dao.getName()+" Email : "+dao.getEmail()+" Contact : "+dao.getContact();
+	}
+	
+	public String getLimittedUserDeatils(){
+		UserDeatilsDao dao = new UserDeatilsDao();
+		return "Name "+dao.getName()+" Email : "+dao.getEmail();
+	}
+}

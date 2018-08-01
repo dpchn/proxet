@@ -1,0 +1,37 @@
+
+public class OuterClass {
+
+	class InnerClass{
+		public void show(){
+			System.out.println("Innner Class");
+		}
+	}
+	
+	
+	static class StaticClass implements i1,i2{
+		static int a =10;
+		public void show(){
+			System.out.println("Static class");
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		OuterClass outerClass = new OuterClass();
+		OuterClass.InnerClass innerClass = outerClass.new InnerClass();
+		System.out.println(OuterClass.StaticClass.a);
+		OuterClass.StaticClass staticClass = new StaticClass();
+		staticClass.show();
+		
+		
+	}
+	
+	
+	interface i1{
+		public void show();
+	}
+	
+	interface i2{
+		public void show();
+	}
+}

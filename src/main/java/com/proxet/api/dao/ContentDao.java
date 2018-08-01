@@ -15,6 +15,7 @@ public class ContentDao extends DAO<Content>{
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public List<Integer> getContentIdList(int id){
 		Session session = AppContext.get().openSession();
 		String sql = "Select ID from ad_content where COMPANY_ID=:id";

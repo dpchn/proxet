@@ -1,0 +1,11 @@
+
+public class PolymorphismExample {
+
+	public void show(){
+		System.out.println("Hello Shows");
+	}
+	
+	public void show(int a){
+		System.out.println("Num is " + a);
+	}
+}

@@ -1,0 +1,31 @@
+package com.hotelproject.api.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.hotelproject.api.dao.HotelDao;
+import com.hotelproject.api.dao.UserDao;
+import com.hotelproject.api.model.Hotel;
+
+@Service
+public class HotelService {
+	
+	public boolean bookHotel(String hotelName, String hotelId, String startDate, String endDate, int noOfPeople, String city, int userId){
+		Hotel bookedHotel = new Hotel(hotelId, hotelName, city, noOfPeople, endDate, startDate);
+		HotelDao dao = new HotelDao();
+		UserDao userDao = new UserDao();
+		List list = new ArrayList<User>();
+		bookedHotel.setUsers(new ArrayList<User>().add(userDao.getUser(1)));
+		int id = dao.book(bookedHotel);
+		if(id==0)
+			return false;
+		else
+			return true;
+	}
+
+	public static void main(String[] args) {
+		new HotelService().bookHotel("RAMESH", "H1", "sd", "ed", 5, "berlin", 1);
+	}
+}

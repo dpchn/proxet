@@ -1,0 +1,29 @@
+package com.demo.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+
+public class UserService {
+
+	//@PreAuthorize("hasRole('PARTY')")
+	public String getName() {
+		return "Durga";
+	}
+
+	
+//	@PreAuthorize("hasRole('USER')")
+	public Map<String, String> findAll(String roles) {
+
+		Map<String, String> map = new HashMap<>();
+		if(roles.equals("USER")){
+		map.put("Name", "Durga");
+		map.put("Contact", "8791424214");
+		}else{
+			map.put("Name", "Durga");
+		}
+		
+		return map;
+	}
+}

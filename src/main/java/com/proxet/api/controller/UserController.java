@@ -53,11 +53,11 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/getAd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/send", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getMappedAdvertisement( HttpServletRequest request) {		
-		String deviceId = request.getParameter("DeviceId");
+		String deviceId = request.getParameter("id");
 		String contactNo = request.getParameter("contactNo");
-
+		System.out.println(deviceId+" "+contactNo);
 		if(userService.isContactMappedWithDevice(deviceId, contactNo)){
 			return new ResponseEntity<>("Already Mapped", HttpStatus.OK);
 		}

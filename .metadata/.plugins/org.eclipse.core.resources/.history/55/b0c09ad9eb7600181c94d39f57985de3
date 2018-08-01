@@ -1,0 +1,26 @@
+package com.demo.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.demo.config.Data;
+import com.demo.config.Roles;
+
+
+
+public class UserService {
+
+	//@PreAuthorize("hasRole('PARTY')")
+	public String getName() {
+		return "Durga";
+	}
+
+	
+//	@PreAuthorize("hasRole('USER')")
+	public Map<String, String> findAll(Roles roles) {
+
+		new Data().getData(roles);
+		
+		
+	}
+}

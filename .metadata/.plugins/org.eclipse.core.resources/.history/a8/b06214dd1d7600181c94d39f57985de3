@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class StockBuySellExample {
+
+	public static void main(String[] args) {
+		int arr[] = {100, 180, 260, 310, 40, 535, 695};
+		calculateProfit(arr, arr.length);
+	}
+	
+	
+	static void calculateProfit(int arr[], int n){
+		
+		if(n==0)
+			return;
+		int count=0;
+		
+		int i=0;
+		List<Position> list = new ArrayList<Position>();
+		while(i<n-1){
+			
+			while(i<n-1 && arr[i+1]<=arr[i])
+				i++;
+			Position position = new Position();
+			position.buy=arr[++i];
+			
+			while(i<n && arr[i-1]<=arr[i])
+				i++;
+			
+			position.sell=arr[i-1];
+			count++;
+			list.add(position);
+		}
+		
+		int profit = 0;
+		for(Position p : list)
+			profit = profit+p.sell-p.buy;
+		//System.out.println("Buy on : "+p.buy+" Sell on : "+p.sell);
+		System.out.println("Total profit : "+profit);
+	}
+	
+	
+	
+}
+
+class Position{
+	int buy, sell;
+}

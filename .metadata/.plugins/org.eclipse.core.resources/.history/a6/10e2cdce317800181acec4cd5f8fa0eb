@@ -1,0 +1,25 @@
+package exceptionHandling;
+
+public class SuperKeywordExample extends SuperClass{
+
+	public static void main(String[] args) {
+		
+	}
+}
+
+class SuperClass{
+	int a=10;
+	int b;
+	
+	public SuperClass() {
+		// TODO Auto-generated constructor stub
+	}
+	public SuperClass(int a){
+		this.a = a;
+	}
+	
+	public SuperClass(int a, int b){
+		this.a = a;
+		this.b = b;
+	}
+}

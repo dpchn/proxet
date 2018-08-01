@@ -1,0 +1,5 @@
+package com.hotelproject.api.service;
+
+public class HotelService {
+
+}

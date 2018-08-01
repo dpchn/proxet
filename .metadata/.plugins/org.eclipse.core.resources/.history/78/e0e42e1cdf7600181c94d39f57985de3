@@ -1,0 +1,26 @@
+package com.demo.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Service;
+
+
+
+public class UserService {
+
+	@PreAuthorize("hasRole('PARTY')")
+	public String getName() {
+		return "Durga";
+	}
+
+	
+	@PreAuthorize("hasRole('USER')")
+	public Map<String, String> findAll() {
+		Map<String, String> map = new HashMap<>();
+		map.put("Name", "Durga");
+		map.put("Contact", "8791424214");
+		return map;
+	}
+}

@@ -1,0 +1,34 @@
+
+
+public class ThisKeywordExample {
+
+	static int a;
+	int b = 20;
+
+	public ThisKeywordExample(int val) {
+		// TODO Auto-generated constructor stub
+		this.a = val;
+	}
+
+	public ThisKeywordExample(int val, int y) {
+		// TODO Auto-generated constructor stub
+		this(50);
+	}
+
+	public static void main(String[] args) {
+		new ThisKeywordExample(4, 5);
+		System.out.println("This keyword with body : " + new Test3(10, 20).a);
+	}
+}
+
+class Test3 {
+	int a;
+
+	public Test(int x) {
+		this.a = x;
+	}
+
+	public Test(int x, int y) {
+		this(x);
+	}
+}

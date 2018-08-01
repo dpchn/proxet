@@ -1,0 +1,9 @@
+package com.hotelproject.api.form;
+
+public class HotelForm {
+	String hotelId;
+	String name;
+	String startDate;
+	String endDate;
+
+}

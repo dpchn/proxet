@@ -1,6 +1,5 @@
 package com.proxet.api.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.proxet.api.dao.CompanyDao;
 import com.proxet.api.form.AdCompaignForm;
 import com.proxet.api.form.AdContentForm;
 import com.proxet.api.form.CompaignRuleForm;
@@ -36,6 +36,7 @@ import com.proxet.api.service.CompanyService;
 import com.proxet.api.service.ContentService;
 import com.proxet.api.service.DeviceService;
 import com.proxet.api.util.ImageFileAndSave;
+import com.proxet.core.context.AppContext;
 
 @Controller
 @RequestMapping("/company")
@@ -74,12 +75,15 @@ public class CompanyController {
 	@PostMapping(value = "/enroll")
 	public String enroll(@ModelAttribute("CompanyEnrollmentForm") @Valid CompanyEnrollmentForm enrollForm,
 			BindingResult result, Model model, HttpServletRequest request) {
-		System.out.println("enroll");
+		CompanyDao dao = AppContext.get().getDAO(CompanyDao.class);
 		if (result.hasErrors()) {
 			System.out.println(result);
 			result.reject("dummy");
 			return "companyenroll";
 		}
+		/*if(dao.isEmailExist(enrollForm.getEmail())==0 ||){
+			
+		}*/
 		int id = companyService.saveEnroll(enrollForm.getFirstName(), enrollForm.getLastName(), enrollForm.getEmail(),
 				enrollForm.getPassword(), enrollForm.getCompany(), enrollForm.getPhone());
 		request.getSession().setAttribute("id", id);

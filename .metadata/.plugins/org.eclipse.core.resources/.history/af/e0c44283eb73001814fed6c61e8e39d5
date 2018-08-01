@@ -1,0 +1,16 @@
+
+public final class FinalClassExample {
+
+	public static void main(String[] args) {
+		System.out.println("Hello");
+		FinalClass class1 = new FinalClass();
+		class1.show();
+	}
+}
+
+
+final class FinalClass{
+	public void show(){
+		System.out.println("Hello world");
+	}
+}

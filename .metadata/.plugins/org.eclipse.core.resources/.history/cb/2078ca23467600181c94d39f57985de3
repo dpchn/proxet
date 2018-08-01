@@ -1,0 +1,14 @@
+package array;
+
+public class MaxSumOfKSize {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	static int maxSum(int arr[], int k){
+		int res=0;
+		for(int i=0; i<k; i++)
+			res +=arr[i];
+	}
+}

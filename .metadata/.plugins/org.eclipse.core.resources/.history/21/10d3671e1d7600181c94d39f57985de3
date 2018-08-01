@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class StockBuySellExample {
+
+	public static void main(String[] args) {
+		int arr[] = {100, 180, 260, 310, 40, 535, 695};
+		
+	}
+	
+	
+	static void calculateProfit(int arr[], int n){
+		
+		if(n==0)
+			return;
+		int count=0;
+		
+		int i=0;
+		List<Position> list = new ArrayList<Position>();
+		while(i<n-1){
+			
+			while(i<n-1 && arr[i+1]<=arr[i])
+				i++;
+			Position position = new Position();
+			position.buy=i++;
+			
+			while(i<n && arr[i-1]<=arr[i])
+				i++;
+			
+			position.sell=i-1;
+			count++;
+			list.add(position);
+		}
+	}
+	
+	
+	
+}
+
+class Position{
+	int buy, sell;
+}

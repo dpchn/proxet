@@ -1,0 +1,17 @@
+package array;
+
+public class CheckPowerOfK {
+
+	public static void main(String[] args) {
+		System.out.println(isPowerOfK(32, 4));
+	}
+	
+	static  boolean isPowerOfK(int n, int 2){
+		while(n>0){
+			if(n%k != 0)
+				return false;
+			n /=k;
+		}
+		return true;
+	}
+}

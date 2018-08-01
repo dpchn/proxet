@@ -1,0 +1,12 @@
+
+public class AbstractClassExample {
+
+}
+
+
+abstract class Ex{
+	public abstract void show();
+	public void test(){
+		System.out.println("Hello");
+	}
+}

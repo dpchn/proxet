@@ -1,0 +1,8 @@
+package exceptionHandling;
+
+public class ThisKeywordExample {
+
+	
+	int a =10;
+	int b =20;
+}

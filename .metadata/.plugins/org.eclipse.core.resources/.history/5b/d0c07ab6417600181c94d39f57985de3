@@ -1,0 +1,22 @@
+package array;
+
+import java.util.Random;
+
+public class CheckLoopInLinkList {
+
+	public static void main(String[] args) {
+		Random random = new Random();
+		int t=5;
+		Node head = new Node();
+		while(t-- > 0){
+			Node p = head;
+			Node newNode = new Node();
+			newNode.data = random.nextInt(100);
+		}
+	}
+}
+
+class Node{
+	int data;
+	Node next;
+}

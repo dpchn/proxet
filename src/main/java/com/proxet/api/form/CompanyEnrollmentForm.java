@@ -4,6 +4,8 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import com.proxet.api.util.ConstantPattern;
 
@@ -84,5 +86,6 @@ public class CompanyEnrollmentForm {
 	public void setCompany(String company) {
 		this.company = company;
 	}
+
 
 }

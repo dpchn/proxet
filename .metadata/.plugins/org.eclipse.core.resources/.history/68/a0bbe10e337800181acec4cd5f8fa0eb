@@ -1,0 +1,44 @@
+package exceptionHandling;
+
+public class SuperKeywordExample extends SuperClass{
+
+	public SuperKeywordExample(){
+		super(50,25); //Use to call Super class contructor from current constructor
+	}
+	public static void main(String[] args) {
+		
+		System.out.println("Super class variabl a :  "+new SuperKeywordExample().a);
+	}
+	
+	/*s*/
+}
+
+class SuperClass extends SuperSuperClass{
+	int a=10;
+	int b;
+	
+	public SuperClass() {
+		// TODO Auto-generated constructor stub
+	}
+	public SuperClass(int a){
+		this.a = a;
+	}
+	
+	public SuperClass(int a, int b){
+		this.a = a;
+		this.b = b;
+	}
+	
+	void test(){
+		System.out.println("Hello Super class method");
+		super.test();
+	}
+}
+
+
+class SuperSuperClass{
+	int a=10;
+	void test(){
+		System.out.println("SuperSuperClass");
+	}
+}

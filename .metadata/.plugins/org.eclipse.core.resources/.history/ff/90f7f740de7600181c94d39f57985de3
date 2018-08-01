@@ -1,0 +1,29 @@
+package com.demo.service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class UserService {
+
+	@PreAuthorize("hasRole('PARTY')")
+	@Override
+	public String getName() {
+		return "Durga";
+	}
+
+	
+	@PreAuthorize("hasRole('USER')")
+	public Map<String, String> findAll() {
+		Map<String, String> map = new HashMap<>();
+		map.put("Name", "Durga");
+		map.put("Contact", "8791424214");
+		return map;
+	}
+}

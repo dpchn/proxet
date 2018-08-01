@@ -1,0 +1,35 @@
+
+public class PolymorphismExample extends Parent{
+
+	@Override
+	public void test() {
+		System.out.println("overried normal method");
+	}
+	
+	public static void main(String[] args) {
+		Parent parent = new Parent();
+		
+		Parent.show();
+		parent.finalMethod();
+		new PolymorphismExample().test();
+		parent.test();
+		
+	}
+}
+
+class Parent {
+	public static void show() {
+
+		System.out.println("Static method");
+	}
+
+	public void test() {
+
+		System.out.println("normal method");
+	}
+
+	public final void finalMethod() {
+
+		System.out.println("final method");
+	}
+}

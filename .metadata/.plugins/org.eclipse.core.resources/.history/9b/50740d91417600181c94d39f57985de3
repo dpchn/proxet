@@ -1,0 +1,20 @@
+package array;
+
+import java.util.Random;
+
+public class CheckLoopInLinkList {
+
+	public static void main(String[] args) {
+		Random random = new Random();
+		int t=5;
+		Node head = nee Node();
+		while(t-- > 0){
+			Node
+		}
+	}
+}
+
+class Node{
+	int data;
+	Node next;
+}
